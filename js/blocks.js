@@ -277,6 +277,17 @@
         return '<section class="band"'+id(b)+'><div class="wrap"><figure class="quote" style="'+col(b.bg||'#7A1B2E',b.ink||'#FBE3E6')+'">'+glassLeaf()+'<blockquote>'+ps.map(function(p,i){return '<p'+(i?'':' class="lead"')+'>'+esc(p)+'</p>'}).join('')+'</blockquote>'+(b.heading?'<figcaption>'+esc(b.heading)+'</figcaption>':'')+'</figure></div></section>';
       }},
 
+    names:{label:'Lists of names (members, donors)',
+      fields:[ANCHOR,{key:'heading',label:'Heading',type:'text'},{key:'text',label:'Text under the heading (optional)',type:'textarea'},
+        {key:'groups',label:'Groups',type:'list',itemLabel:'title',noun:'group',fields:[{key:'title',label:'Group name',type:'text'},{key:'names',label:'Names, one per line',type:'textarea'}],make:function(){return {title:'New group',names:''}}}],
+      make:function(){return {type:'names',anchor:'',heading:'Thank you',text:'',groups:[]}},
+      render:function(b){
+        return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+(b.text?'<div class="people-text">'+paras(b.text)+'</div>':'')+'<div class="folds">'+(b.groups||[]).map(function(g){
+          var list=String(g.names||'').split('\n').map(function(n){return n.trim()}).filter(Boolean);
+          return '<details class="fold"><summary><span>'+esc(g.title)+' <span class="count">('+list.length+')</span></span></summary><ul class="names">'+list.map(function(n){return '<li>'+esc(n)+'</li>'}).join('')+'</ul></details>';
+        }).join('')+'</div></div></section>';
+      }},
+
     banner:{label:'Colour banner with a button',
       fields:[{key:'text',label:'Text',type:'textarea'},{key:'linkLabel',label:'Button text',type:'text'},{key:'url',label:'Button address',type:'text'},COLOR('bg','Background colour'),COLOR('ink','Text colour')],
       make:function(){return {type:'banner',text:'Something worth knowing.',linkLabel:'Learn more',url:'#',bg:'#24456E',ink:'#F3ECD6'}},
