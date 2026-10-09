@@ -87,7 +87,7 @@
         '<div class="cal-tools"><div class="cal-view" role="group" aria-label="Calendar view"><button type="button" data-view="list" aria-pressed="'+(view==='list')+'">List</button><button type="button" data-view="month" aria-pressed="'+(view==='month')+'">Full month</button></div>'+
         '<div class="cal-nav"><button type="button" data-go="-1" aria-label="Previous month">&larr;</button><button type="button" data-go="0">Today</button><button type="button" data-go="1" aria-label="Next month">&rarr;</button></div></div></div>';
       h+='<div class="cal-filters" role="group" aria-label="Show or hide kinds of programs">';
-      (site.cats||[]).forEach(function(c){h+='<button type="button" class="pill" data-cat="'+esc(c.id)+'" aria-pressed="'+(off[c.id]?'false':'true')+'" style="--c:'+esc(c.bg)+';--k:'+esc(c.ink)+'">'+esc(c.label)+'</button>'});
+      (site.cats||[]).forEach(function(c){h+='<label class="filt" style="--c:'+esc(c.bg)+'"><input type="checkbox" data-cat="'+esc(c.id)+'"'+(off[c.id]?'':' checked')+'>'+esc(c.label)+'</label>'});
       h+='</div><div class="cal-scroll" role="region" aria-label="Full month calendar" tabindex="0"><div class="cal-grid">';
       DOW.forEach(function(d,i){h+='<div class="dow'+(i===0||i===6?' we':'')+'">'+d+'</div>'});
       for(var i=0;i<first;i++)h+='<div class="day blank"></div>';
@@ -135,6 +135,11 @@
       draw();
       var again=root.querySelector(key);if(again)again.focus();
     });
+    root.addEventListener('change',function(ev){
+      var t=ev.target;if(!t.matches||!t.matches('input[data-cat]'))return;
+      off[t.dataset.cat]=!t.checked;draw();
+      var again=root.querySelector('input[data-cat="'+t.dataset.cat+'"]');if(again)again.focus();
+    });
     draw();
   }
 
@@ -158,7 +163,7 @@
           '<h1>'+esc(b.title)+'</h1>'+
           '<div class="stage"><div class="row"></div><div class="plank"></div></div>'+
           '<div class="below"><div class="lede"><p>'+esc(b.lede)+'</p>'+(b.linkLabel?'<a href="'+esc(b.linkUrl||'#')+'">'+esc(b.linkLabel)+'</a>':'')+
-          '<div class="pager"><button type="button" class="prev" aria-label="Previous book">&larr;</button><button type="button" class="next" aria-label="Next book">&rarr;</button><button type="button" class="playpause" aria-label="Pause the book slideshow">Pause</button></div></div>'+
+          '<div class="pager"><button type="button" class="prev" aria-label="Previous book">&larr;</button><button type="button" class="next" aria-label="Next book">&rarr;</button></div></div>'+
           '<div class="detail"><img class="dcover" alt=""><aside class="card" aria-label="Selected book"><div class="entry"><p class="ti"></p><p class="au"></p><p class="note"></p></div></aside></div></div>'+
           '</div></section>';
       },

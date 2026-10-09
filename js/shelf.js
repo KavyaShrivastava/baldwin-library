@@ -56,14 +56,13 @@ window.initShelf=function(root,books){
     z.addEventListener('pointerenter',pause);z.addEventListener('pointerleave',resume);
     z.addEventListener('focusin',pause);z.addEventListener('focusout',resume);
   });
-  var pp=q('.playpause');
-  if(reduced){pp.hidden=true}
-  else pp.addEventListener('click',function(){
-    stopped=!stopped;pp.textContent=stopped?'Play':'Pause';
-    pp.setAttribute('aria-label',stopped?'Play the book slideshow':'Pause the book slideshow');schedule();
-  });
-  q('.prev').addEventListener('click',function(){step(-1);schedule()});
-  q('.next').addEventListener('click',function(){step(1);schedule()});
+  /* the shelf turns its own pages until someone picks a book themselves (click, tap or keyboard); after that it stays put */
+  function stop(){stopped=true;clearTimeout(timer)}
+  stage.addEventListener('click',stop);
+  stage.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '||e.key==='Tab')stop()});
+  detail.parentNode.addEventListener('click',function(e){if(e.target.closest('.prev,.next'))stop()});
+  q('.prev').addEventListener('click',function(){step(-1)});
+  q('.next').addEventListener('click',function(){step(1)});
 
   fillCard(0,false);
   if(reduced){select(0,false)}
