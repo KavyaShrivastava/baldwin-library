@@ -531,3 +531,7 @@ main{overflow-wrap:break-word}
 
 /* a single picture never grows taller than the screen (posters, flyers) */
 .pic img{width:auto;max-width:100%;max-height:85vh}
+
+/* show only the bottom strip of a tall picture (the logo row of a flyer), on a white panel like the original */
+.pic.strip{background:#fff;border-radius:.9rem;padding:clamp(.6rem,2vw,1.2rem);max-width:60rem}
+.pic.strip img{display:block;width:100%;max-height:none;aspect-ratio:1545 / 236;object-fit:cover;object-position:50% 100%;border-radius:0}

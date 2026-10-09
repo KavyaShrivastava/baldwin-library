@@ -294,9 +294,9 @@
       render:function(b){return '<section class="band"'+id(b)+'><div class="wrap"><div class="banner" style="'+col(b.bg,b.ink)+'"><p>'+esc(b.text)+'</p>'+(b.linkLabel?'<a class="btn" href="'+esc(b.url||'#')+'">'+esc(b.linkLabel)+' <span aria-hidden="true">&rarr;</span></a>':'')+'</div></div></section>'}},
 
     image:{label:'Picture',
-      fields:[{key:'src',label:'Picture',type:'image'},{key:'alt',label:'Describe the picture (for screen readers)',type:'text'},{key:'caption',label:'Caption',type:'text'}],
+      fields:[{key:'src',label:'Picture',type:'image'},{key:'crop',label:'How much to show',type:'select',options:[['','The whole picture'],['strip','Only the strip along the bottom (e.g. a row of logos on a flyer)']]},{key:'alt',label:'Describe the picture (for screen readers)',type:'text'},{key:'caption',label:'Caption',type:'text'}],
       make:function(){return {type:'image',src:'',alt:'',caption:''}},
-      render:function(b){return '<section class="band"'+id(b)+'><div class="wrap"><figure class="pic">'+(b.src?'<img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">':'<div class="pic-empty">No picture chosen yet</div>')+(b.caption?'<figcaption>'+esc(b.caption)+'</figcaption>':'')+'</figure></div></section>'}}
+      render:function(b){return '<section class="band"'+id(b)+'><div class="wrap"><figure class="pic'+(b.crop==='strip'?' strip':'')+'">'+(b.src?'<img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">':'<div class="pic-empty">No picture chosen yet</div>')+(b.caption?'<figcaption>'+esc(b.caption)+'</figcaption>':'')+'</figure></div></section>'}}
   };
 
   /* sections ease up into place the first time they scroll into view; skipped for people who ask for less motion */
