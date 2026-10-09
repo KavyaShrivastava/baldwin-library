@@ -436,3 +436,10 @@ body{font-size:1.0625rem}
   .notes .note-card.has-art{grid-template-columns:4.5rem minmax(0,1fr)}
   .notes .art{width:4.5rem}
 }
+
+/* ---------- phones: long buttons wrap instead of pushing the page sideways ---------- */
+@media (max-width:560px){
+  .btn{white-space:normal;text-align:center}
+  .cta-btns .btn{flex:1 1 100%}
+  .cta-box .leaf{width:4.5rem}
+}
