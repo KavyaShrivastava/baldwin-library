@@ -420,3 +420,19 @@ body{font-size:1.0625rem}
 .nc-more p{font-size:1.1rem;color:var(--card-ink)}
 .cal-list li{font-size:1.15rem}
 .prose p,.prose li{font-size:1.15rem}
+
+/* ---------- roomier notices: everything visible, with more air around each one ---------- */
+.notes{gap:1.1rem}
+.notes .note-card,.notes .note-card.has-art{padding:1.9rem 2rem;gap:1rem 2.4rem;align-items:start}
+.notes .note-card.has-art{grid-template-columns:5.2rem minmax(0,20rem) minmax(0,1fr)}
+.notes .art{width:5.2rem}
+.nc-head{padding-top:.2rem}
+.nc-body p{line-height:1.55}
+.nc-body .nc-extra{margin-top:.8rem;font-size:1.05rem;line-height:1.6;color:var(--muted)}
+.band{padding-block:clamp(3rem,7vw,5.5rem)}
+.band h2{margin-bottom:1.8rem}
+@media (max-width:800px){
+  .notes .note-card,.notes .note-card.has-art{padding:1.4rem}
+  .notes .note-card.has-art{grid-template-columns:4.5rem minmax(0,1fr)}
+  .notes .art{width:4.5rem}
+}
