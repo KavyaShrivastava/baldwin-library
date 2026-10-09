@@ -42,6 +42,7 @@
   E(26,'18:30','19:30','Cancer Support Group','care');
   E(27,'19:00','','Board Meeting','community');
   E(31,'','','Trick or Treat','community');
+  events.push({"date": "2026-11-07", "start": "12:00", "end": "13:30", "title": "The Baldwin Area Honors Its Veterans", "cat": "community", "note": "“Our Local History” series, with the Santa Fe Trail Historical Society"});
 
   window.DEFAULT_SITE={
     version:1,
@@ -94,6 +95,9 @@
           {title:'BookPage',text:'This month\u2019s book reviews and recommendations, free to read online.',linkLabel:'Read BookPage',url:'https://www.bookpage.com/dig-baldwincitylibrary/',bg:'#24456E',ink:'#F3ECD6'}
         ]},
         {type:'cards',anchor:'news',kicker:'',heading:'Good to know',items:[
+          {"art": "star", "photo": "", "tag": "Saturday, Nov. 7 · noon to 1:30 p.m.", "title": "The Baldwin Area Honors Its Veterans", "text": "Part of the “Our Local History” series. Learn how the Baldwin area has honored its veterans through events, memorial programs and buildings, then take part in a special event honoring veterans today. Presented with the Santa Fe Trail Historical Society.", "linkLabel": "", "url": ""},
+          {"art": "star", "photo": "", "tag": "Now through Nov. 15", "title": "Veterans’ Wall of Honor", "text": "Add your veteran’s name to the wall at the library. Pick up a form at the main desk and complete it with their name and branch of service. We are honoring veterans from all over the US.", "linkLabel": "", "url": ""},
+          {"art": "signpost", "photo": "", "tag": "Mondays · 2 to 4 p.m.", "title": "Community Resource Navigation", "text": "Free, individualized help from United Way of Kaw Valley, in person at the library: applying for assistance, housing options, applications, appointments and finding community resources.", "linkLabel": "", "url": ""},
           {art:'van',tag:'First Wednesday of the month · 1:30 to 2:30 p.m.',title:'Just Food’s Cruising Cupboard',text:'The mobile food pantry visits the library once a month.',linkLabel:'',url:''},
           {art:'nofine',tag:'',title:'Your Baldwin City Library is fine free',text:'',linkLabel:'Read the announcement',url:OLD+'/your-baldwin-city-library-is-fine-free/'}
         ]},

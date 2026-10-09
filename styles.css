@@ -1,7 +1,7 @@
 /* Layout: headline top-left, one flat row of bright spines standing on a single ink line, catalog card and date-due slip beneath it. */
 :root{
-  --bg:#F3F0F9; --ink:#1B1722; --muted:#5F5870; --rule:#DCD5EA; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#B5410F; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
-  --card:#FFFFFF; --card-ink:#1B1722; --card-rule:#DCD5EA; --stamp:#B8352B;
+  --bg:#FBEBE2; --ink:#1F1714; --muted:#6A5850; --rule:#EDD3C6; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#B5410F; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
+  --card:#FFFFFF; --card-ink:#1F1714; --card-rule:#EDD3C6; --stamp:#B8352B;
   --label:#FFFFFF; --label-ink:#1A1917;
   --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
   --body:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -373,6 +373,8 @@ main:focus{outline:none}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.7s}
 @media (prefers-reduced-motion:reduce){.lamp,.lamp-under{transition:none}.lamp-hint{animation:none}}
 
-/* ---------- sound switch ---------- */
-.sound-toggle{font:inherit;color:inherit;background:none;border:1.5px solid var(--rule);border-radius:999px;padding:.25rem .8rem;cursor:pointer}
-.sound-toggle:hover{border-color:var(--ink)}
+/* ---------- notice cards: balanced rows, like the tiles ---------- */
+.notes{grid-template-columns:repeat(12,minmax(0,1fr))}
+.note-card{grid-column:span var(--span,6)}
+@media (max-width:900px){.note-card{grid-column:span 6}.note-card:last-child:nth-child(odd){grid-column:span 12}}
+@media (max-width:640px){.notes{grid-template-columns:repeat(12,minmax(0,1fr))}.note-card,.note-card:last-child:nth-child(odd){grid-column:span 12}}

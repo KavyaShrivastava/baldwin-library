@@ -16,6 +16,12 @@
   function id(b){return b.anchor?' id="'+esc(b.anchor)+'"':''}
   function head(b){return (b.kicker?'<p class="kicker">'+esc(b.kicker)+'</p>':'')+(b.heading?'<h2>'+esc(b.heading)+'</h2>':'')}
   function col(bg,ink){return (bg?'--tb:'+esc(bg)+';':'')+(ink?'--ti:'+esc(ink)+';':'')}
+  /* rows of up to `max`, balanced so nothing is left alone (5 with max 4 = 2 + 3); returns how many of 12 columns item i takes */
+  function rowSpan(i,n,max){
+    var rows=Math.ceil(n/max),base=Math.floor(n/rows),small=rows-(n%rows),row=0,left=i;
+    while(left>=(row<small?base:base+1)){left-=(row<small?base:base+1);row++}
+    return 12/(row<small?base:base+1);
+  }
   var COLOR=function(key,label){return {key:key,label:label,type:'color'}};
   var ANCHOR={key:'anchor',label:'Link name (for #links to this section)',type:'text'};
 
@@ -32,6 +38,8 @@
   /* small flat pictures a notice card can carry */
   var ART={
     van:{label:'Food van',bg:'#2C0E78',svg:'<g class="van"><rect x="14" y="42" width="70" height="42" rx="6" fill="#E8591F"/><path d="M84 54h13l11 15v15H84z" fill="#F58A55"/><path d="M88 59h7l8 11H88z" fill="#F7EEDF"/><circle cx="49" cy="64" r="10" fill="#F7EEDF"/><path d="M50 53c1-6 6-8 11-7-1 5-5 8-11 7z" fill="#5E8F6B"/><circle cx="36" cy="86" r="9" fill="#16151A"/><circle cx="36" cy="86" r="3.5" fill="#F7EEDF"/><circle cx="92" cy="86" r="9" fill="#16151A"/><circle cx="92" cy="86" r="3.5" fill="#F7EEDF"/></g><rect x="8" y="96" width="104" height="3" rx="1.5" fill="#F7EEDF" opacity=".45"/>'},
+    star:{label:'Star',bg:'#2C0E78',svg:'<polygon points="60.0,24.0 68.8,47.9 94.2,48.9 74.3,64.6 81.2,89.1 60.0,75.0 38.8,89.1 45.7,64.6 25.8,48.9 51.2,47.9" fill="#F7EEDF"/><circle cx="60" cy="60" r="6" fill="#E8591F"/>'},
+    signpost:{label:'Signpost',bg:'#BF430C',svg:'<rect x="57" y="24" width="6" height="76" rx="2" fill="#F7EEDF"/><path d="M34 30h44l11 10-11 10H34z" fill="#F7EEDF"/><path d="M86 56H44L33 66l11 10h42z" fill="#F6C9AE"/><rect x="40" y="98" width="40" height="4" rx="2" fill="#F7EEDF" opacity=".5"/>'},
     nofine:{label:'No fines',bg:'#2E6646',svg:'<circle cx="60" cy="60" r="30" fill="#F7EEDF"/><circle cx="60" cy="60" r="23" fill="none" stroke="#2E6646" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/><path d="M60 43v34M68 51c-2-3-5-4-8-4-5 0-8 3-8 6 0 8 16 5 16 13 0 4-4 7-9 7-4 0-7-2-9-5" fill="none" stroke="#2E6646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect class="strike" x="18" y="55" width="84" height="10" rx="5" fill="#16151A" transform="rotate(-38 60 60)"/>'}
   };
   function artHtml(k){var a=ART[k];return a?'<span class="art art-'+k+'" style="background:'+a.bg+'" aria-hidden="true"><svg viewBox="0 0 120 120">'+a.svg+'</svg></span>':''}
@@ -176,22 +184,20 @@
       render:function(b){
         return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="tiles'+(b.look==='soft'?' quiet':' bold')+'">'+(b.items||[]).map(function(t,i,all){
           /* rows of up to four, balanced so no tile is left alone: 5 tiles = 2 + 3, 7 = 3 + 4 */
-          var n=all.length,rows=Math.ceil(n/4),base=Math.floor(n/rows),small=rows-(n%rows),row=0,left=i;
-          while(left>=(row<small?base:base+1)){left-=(row<small?base:base+1);row++}
-          var span=12/(row<small?base:base+1);
+          var span=rowSpan(i,all.length,4);
           return '<a class="tile" href="'+esc(t.url||'#')+'" style="'+col(t.bg,t.ink)+'--span:'+span+'"><div>'+(b.look==='soft'?LEAF:glassLeaf())+'<h3>'+esc(t.title)+'</h3>'+(t.text?'<p>'+esc(t.text)+'</p>':'')+'</div>'+(t.linkLabel?'<span class="go">'+esc(t.linkLabel)+' <span aria-hidden="true">&rarr;</span></span>':'')+'</a>';
         }).join('')+'</div></div></section>';
       }},
 
     cards:{label:'Notice cards',
       fields:[ANCHOR,{key:'kicker',label:'Small line above',type:'text'},{key:'heading',label:'Heading',type:'text'},
-        {key:'items',label:'Cards',type:'list',itemLabel:'title',noun:'card',fields:[{key:'art',label:'Little drawing',type:'select',options:[['','None'],['van','Food van'],['nofine','No fines']]},{key:'photo',label:'Or your own picture',type:'image'},{key:'tag',label:'Tag (when, or what kind)',type:'text'},{key:'title',label:'Title',type:'text'},{key:'text',label:'Text',type:'textarea'},{key:'linkLabel',label:'Link text',type:'text'},{key:'url',label:'Link address',type:'text'}],
+        {key:'items',label:'Cards',type:'list',itemLabel:'title',noun:'card',fields:[{key:'art',label:'Little drawing',type:'select',options:[['','None'],['van','Food van'],['nofine','No fines'],['star','Star'],['signpost','Signpost']]},{key:'photo',label:'Or your own picture',type:'image'},{key:'tag',label:'Tag (when, or what kind)',type:'text'},{key:'title',label:'Title',type:'text'},{key:'text',label:'Text',type:'textarea'},{key:'linkLabel',label:'Link text',type:'text'},{key:'url',label:'Link address',type:'text'}],
          make:function(){return {art:'',tag:'',title:'New notice',text:'',linkLabel:'',url:''}}}],
       make:function(){return {type:'cards',anchor:'',kicker:'',heading:'News',items:[]}},
       render:function(b){
-        return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="notes">'+(b.items||[]).map(function(c){
+        return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="notes">'+(b.items||[]).map(function(c,i,all){
           var pic=c.photo?'<span class="art"><img src="'+esc(c.photo)+'" alt=""></span>':artHtml(c.art);
-          return '<article class="note-card'+(pic?' has-art':'')+'">'+pic+'<div>'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3>'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
+          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div>'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3>'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
         }).join('')+'</div></div></section>';
       }},
 
@@ -328,13 +334,12 @@
     var nav='<a class="skip" href="#main">Skip to main content</a><p class="mock">Design mockup. This is not the official '+esc(site.name)+' website.</p><div class="stripe" aria-hidden="true"></div><header class="wrap"><nav class="nav" aria-label="Main"><a class="mark" href="index.html">'+(site.logo?'<img src="'+esc(site.logo)+'" alt="'+esc(site.name)+'">':esc(site.name))+'</a><div class="links">'+
       ((site.nav||[]).some(function(n){return n.url==='index.html'})?[]:[{label:'Home',url:'index.html'}]).concat(site.nav||[]).map(function(n,i,all){return '<a href="'+esc(n.url)+'"'+(n.url===here?' aria-current="page"':'')+'>'+esc(n.label)+'</a>'}).join('')+'</div>'+
       '<div class="lamp-wrap"><span class="lamp-hint" aria-hidden="true">Click me <span>&rarr;</span></span><button type="button" class="lamp" aria-pressed="false" aria-label="Turn the lamp on (night colours)"><svg viewBox="0 0 120 190" aria-hidden="true"><path class="lamp-base" d="M28 188 Q28 171 60 171 Q92 171 92 188 Z"/><circle class="lamp-knob" cx="60" cy="17" r="5"/><path class="lamp-shade" d="M8 86 Q7 23 60 20 Q113 23 112 86 Z"/><ellipse class="lamp-under" cx="60" cy="86" rx="52" ry="7"/><rect class="lamp-stem" x="55.5" y="86" width="9" height="88"/></svg></button></div></nav></header>';
-    var foot='<footer class="wrap foot"><span>'+esc(site.name)+(site.tagline?' &middot; '+esc(site.tagline):'')+'</span>'+'<button type="button" class="sound-toggle" aria-pressed="true">Sound: on</button>'+(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?'<nav aria-label="Footer"><a href="admin.html">Staff sign-in</a></nav>':'')+'</footer>';
+    var foot='<footer class="wrap foot"><span>'+esc(site.name)+(site.tagline?' &middot; '+esc(site.tagline):'')+'</span>'+(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?'<nav aria-label="Footer"><a href="admin.html">Staff sign-in</a></nav>':'')+'</footer>';
     if(!page){app.innerHTML=nav+'<main id="main" tabindex="-1"><section class="band"><div class="wrap"><h1>Page not found</h1><p><a href="index.html">Back to the homepage</a></p></div></section></main>'+foot;return}
     document.title=(slug==='home'?'':page.title+' \u00b7 ')+site.name;
     app.innerHTML=nav+'<main id="main" tabindex="-1">'+page.blocks.map(function(b,i){var d=window.BLOCKS[b.type];return d?'<div data-block="'+i+'">'+d.render(b,site)+'</div>':''}).join('')+'</main>'+foot;
     page.blocks.forEach(function(b,i){var d=window.BLOCKS[b.type];if(d&&d.mount)d.mount(app.querySelector('[data-block="'+i+'"]'),b,site)});
     reveal(app);
     lamp(app);
-    if(window.initSoundToggle)window.initSoundToggle(app);
   };
 })();
