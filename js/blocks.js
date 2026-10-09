@@ -196,13 +196,13 @@
 
     cards:{label:'Notice cards',
       fields:[ANCHOR,{key:'kicker',label:'Small line above',type:'text'},{key:'heading',label:'Heading',type:'text'},
-        {key:'items',label:'Cards',type:'list',itemLabel:'title',noun:'card',fields:[{key:'art',label:'Little drawing',type:'select',options:[['','None'],['van','Food van'],['nofine','No fines'],['star','Star'],['signpost','Signpost']]},{key:'photo',label:'Or your own picture',type:'image'},{key:'tag',label:'Tag (when, or what kind)',type:'text'},{key:'title',label:'Title',type:'text'},{key:'text',label:'Text',type:'textarea'},{key:'linkLabel',label:'Link text',type:'text'},{key:'url',label:'Link address',type:'text'}],
+        {key:'items',label:'Cards',type:'list',itemLabel:'title',noun:'card',fields:[{key:'art',label:'Little drawing',type:'select',options:[['','None'],['van','Food van'],['nofine','No fines'],['star','Star'],['signpost','Signpost']]},{key:'photo',label:'Or your own picture',type:'image'},{key:'tag',label:'Tag (when, or what kind)',type:'text'},{key:'title',label:'Title',type:'text'},{key:'text',label:'One short line (keep it under ten words)',type:'textarea'},{key:'more',label:'Extra details (hidden until “More details” is opened)',type:'textarea'},{key:'linkLabel',label:'Link text',type:'text'},{key:'url',label:'Link address',type:'text'}],
          make:function(){return {art:'',tag:'',title:'New notice',text:'',linkLabel:'',url:''}}}],
       make:function(){return {type:'cards',anchor:'',kicker:'',heading:'News',items:[]}},
       render:function(b){
         return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="notes">'+(b.items||[]).map(function(c,i,all){
           var pic=c.photo?'<span class="art"><img src="'+esc(c.photo)+'" alt=""></span>':artHtml(c.art);
-          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div class="nc-head">'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3></div><div class="nc-body">'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
+          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div class="nc-head">'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3></div><div class="nc-body">'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.more?'<details class="nc-more"><summary>More details</summary><p>'+esc(c.more)+'</p></details>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
         }).join('')+'</div></div></section>';
       }},
 

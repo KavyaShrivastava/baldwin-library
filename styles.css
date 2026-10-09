@@ -407,3 +407,16 @@ main:focus{outline:none}
 .cal-list li{background:color-mix(in oklch,var(--c) 16%,var(--bg))}
 .chip{background:color-mix(in oklch,var(--c) 22%,var(--card))}
 .cal-list .tag{color:var(--ink)}
+
+/* ---------- easier reading: larger type, one short line per notice, the rest behind "More details" ---------- */
+body{font-size:1.0625rem}
+.note-card h3{font-size:1.45rem}
+.nc-head .when{font-size:1.1rem}
+.nc-body p{font-size:1.2rem;line-height:1.45}
+.nc-more{margin-top:.4rem}
+.nc-more summary{cursor:pointer;font-weight:600;font-size:1.05rem;text-decoration:underline;text-underline-offset:.25em;list-style:none;display:inline-block;padding:.2rem 0}
+.nc-more summary::-webkit-details-marker{display:none}
+.nc-more[open] summary{margin-bottom:.4rem}
+.nc-more p{font-size:1.1rem;color:var(--card-ink)}
+.cal-list li{font-size:1.15rem}
+.prose p,.prose li{font-size:1.15rem}
