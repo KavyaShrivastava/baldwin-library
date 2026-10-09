@@ -299,10 +299,6 @@ main:focus{outline:none}
 .role{display:block;font-size:.9rem;color:var(--muted)}
 .people-text p{margin:0 0 1.2rem;max-width:38rem}
 
-/* ---------- scroll-in ---------- */
-.rise{animation:rise .5s cubic-bezier(.2,.7,.2,1) var(--rd,0ms) backwards}
-@keyframes rise{from{opacity:0;translate:0 1.5rem}}
-
 /* ---------- structured text and expandable sections ---------- */
 .prose p{margin:0 0 1rem;font-size:1.1rem;line-height:1.55;max-width:42rem}
 .prose ul{margin:0 0 1.2rem;padding-left:1.2rem;max-width:42rem;line-height:1.5}

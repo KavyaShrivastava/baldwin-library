@@ -309,26 +309,6 @@
       render:function(b){return '<section class="band"'+id(b)+'><div class="wrap"><figure class="pic'+(b.crop==='strip'?' strip':'')+'">'+(b.src?'<img src="'+esc(b.src)+'" alt="'+esc(b.alt)+'">':'<div class="pic-empty">No picture chosen yet</div>')+(b.caption?'<figcaption>'+esc(b.caption)+'</figcaption>':'')+'</figure></div></section>'}}
   };
 
-  /* sections ease up into place the first time they scroll into view; skipped for people who ask for less motion */
-  function reveal(app){
-    if(!('IntersectionObserver' in window)||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))return;
-    var els=app.querySelectorAll('main h2, main .kicker, .ph-text, .welcome > div:last-child, .tile, .note-card, .person, .fold, .visit > div, .cta-box, .banner, .pic, .spot, .quote, .gallery figure, .cal-body');
-    /* nothing is ever hidden while it waits: the animation only starts once the element is actually on screen */
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting)return;
-        var el=en.target;io.unobserve(el);el.classList.add('rise');
-        el.addEventListener('animationend',function(){el.classList.remove('rise');el.style.removeProperty('--rd')},{once:true});
-      });
-    },{rootMargin:'0px 0px -6% 0px',threshold:.01});
-    [].forEach.call(els,function(el){
-      if(el.closest('.hero'))return;
-      var sibs=[].filter.call(el.parentNode.children,function(c){return c.className===el.className});
-      el.style.setProperty('--rd',Math.min(sibs.indexOf(el),4)*60+'ms');
-      io.observe(el);
-    });
-  }
-
   /* the lamp in the menu: off is the normal daytime site, on switches every page to night colours; the choice is remembered */
   function lamp(app){
     var btn=app.querySelector('.lamp');if(!btn)return;
@@ -361,7 +341,6 @@
     document.title=(slug==='home'?'':page.title+' \u00b7 ')+site.name;
     app.innerHTML=nav+'<main id="main" tabindex="-1">'+page.blocks.map(function(b,i){var d=window.BLOCKS[b.type];return d?'<div data-block="'+i+'">'+d.render(b,site)+'</div>':''}).join('')+'</main>'+foot;
     page.blocks.forEach(function(b,i){var d=window.BLOCKS[b.type];if(d&&d.mount)d.mount(app.querySelector('[data-block="'+i+'"]'),b,site)});
-    reveal(app);
     lamp(app);
     /* notices: the fuller details sit open on big screens and behind "Read more" on phones */
     var wide=window.matchMedia('(min-width:761px)');
