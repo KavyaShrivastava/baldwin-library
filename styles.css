@@ -1,6 +1,6 @@
 /* Layout: headline top-left, one flat row of bright spines standing on a single ink line, catalog card and date-due slip beneath it. */
 :root{
-  --bg:#FAF4E8; --ink:#1F1A14; --muted:#635848; --rule:#E2D5BD; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#A3390B; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
+  --bg:#FAF4E8; --ink:#1F1A14; --muted:#635848; --rule:#E2D5BD; --accent:#102A4C; --orange:#E8591F; --orange-ink:#A3390B; --indigo:#102A4C; --logo-bg:transparent; color-scheme:light;
   --card:#F1E7D3; --card-ink:#1F1A14; --card-rule:#DCCDB0; --stamp:#B8352B;
   --label:#FFFFFF; --label-ink:#1A1917;
   --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -16,7 +16,7 @@ a{color:inherit}
 
 /* nav */
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:1.25rem;border-bottom:1px solid var(--rule)}
-.stripe{height:.45rem;background:linear-gradient(90deg,var(--indigo) 0 72%,var(--orange) 72%)}
+.stripe{height:.45rem;background:linear-gradient(90deg,#102A4C 0 72%,var(--orange) 72%)}
 .mark img{display:block;height:clamp(2.5rem,5vw,3.3rem);width:auto;background:var(--logo-bg);border-radius:.4rem}
 .mark{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
 .links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;font-size:.95rem;font-weight:500}
@@ -352,7 +352,7 @@ main:focus{outline:none}
 
 /* ---------- the lamp: night colours, only when someone switches it on ---------- */
 :root[data-theme="dark"]{
-  --bg:#1B1611; --ink:#F5EEE2; --muted:#B5AA99; --rule:#3B3328; --accent:#B9A6F5; --orange:#F26B33; --orange-ink:#FF9A6B; --indigo:#4A2A9A; --logo-bg:#F7EEDF;
+  --bg:#1B1611; --ink:#F5EEE2; --muted:#B5AA99; --rule:#3B3328; --accent:#9DB7E0; --orange:#F26B33; --orange-ink:#FF9A6B; --indigo:#1F447A; --logo-bg:#F7EEDF;
   --card:#27201A; --card-ink:#F5EEE2; --card-rule:#40372B; --stamp:#E8705F; color-scheme:dark;
 }
 .nav .mark{order:1}
@@ -535,3 +535,17 @@ main{overflow-wrap:break-word}
 /* show only the bottom strip of a tall picture (the logo row of a flyer), on a white panel like the original */
 .pic.strip{background:#fff;border-radius:.9rem;padding:clamp(.6rem,2vw,1.2rem);max-width:60rem}
 .pic.strip img{display:block;width:100%;max-height:none;aspect-ratio:1545 / 236;object-fit:cover;object-position:50% 100%;border-radius:0}
+
+/* ---------- photo with a short story ---------- */
+.spot{background:var(--tb);color:var(--ti);border-radius:.9rem;overflow:hidden;display:grid;grid-template-columns:minmax(0,18rem) minmax(0,1fr);align-items:stretch}
+.spot.no-photo{grid-template-columns:minmax(0,1fr)}
+.spot-photo{min-height:22rem;background-repeat:no-repeat;background-color:rgba(0,0,0,.2)}
+.spot-text{padding:clamp(1.5rem,4vw,2.8rem);align-self:center}
+.spot-text h2{margin-bottom:1rem}
+.spot-text p{margin:0 0 1rem;font-size:1.2rem;line-height:1.55;max-width:36rem}
+.spot-text p:last-child{margin-bottom:0}
+@media (max-width:760px){
+  .spot{grid-template-columns:minmax(0,1fr)}
+  .spot-photo{min-height:0;aspect-ratio:4 / 3.6}
+  .spot-text{padding:1.4rem}
+}

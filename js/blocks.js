@@ -37,8 +37,8 @@
 
   /* small flat pictures a notice card can carry */
   var ART={
-    van:{label:'Food van',bg:'#2C0E78',svg:'<g class="van"><rect x="14" y="42" width="70" height="42" rx="6" fill="#E8591F"/><path d="M84 54h13l11 15v15H84z" fill="#F58A55"/><path d="M88 59h7l8 11H88z" fill="#F7EEDF"/><circle cx="49" cy="64" r="10" fill="#F7EEDF"/><path d="M50 53c1-6 6-8 11-7-1 5-5 8-11 7z" fill="#5E8F6B"/><circle cx="36" cy="86" r="9" fill="#16151A"/><circle cx="36" cy="86" r="3.5" fill="#F7EEDF"/><circle cx="92" cy="86" r="9" fill="#16151A"/><circle cx="92" cy="86" r="3.5" fill="#F7EEDF"/></g><rect x="8" y="96" width="104" height="3" rx="1.5" fill="#F7EEDF" opacity=".45"/>'},
-    star:{label:'Star',bg:'#2C0E78',svg:'<polygon points="60.0,24.0 68.8,47.9 94.2,48.9 74.3,64.6 81.2,89.1 60.0,75.0 38.8,89.1 45.7,64.6 25.8,48.9 51.2,47.9" fill="#F7EEDF"/><circle cx="60" cy="60" r="6" fill="#E8591F"/>'},
+    van:{label:'Food van',bg:'#102A4C',svg:'<g class="van"><rect x="14" y="42" width="70" height="42" rx="6" fill="#E8591F"/><path d="M84 54h13l11 15v15H84z" fill="#F58A55"/><path d="M88 59h7l8 11H88z" fill="#F7EEDF"/><circle cx="49" cy="64" r="10" fill="#F7EEDF"/><path d="M50 53c1-6 6-8 11-7-1 5-5 8-11 7z" fill="#5E8F6B"/><circle cx="36" cy="86" r="9" fill="#16151A"/><circle cx="36" cy="86" r="3.5" fill="#F7EEDF"/><circle cx="92" cy="86" r="9" fill="#16151A"/><circle cx="92" cy="86" r="3.5" fill="#F7EEDF"/></g><rect x="8" y="96" width="104" height="3" rx="1.5" fill="#F7EEDF" opacity=".45"/>'},
+    star:{label:'Star',bg:'#102A4C',svg:'<polygon points="60.0,24.0 68.8,47.9 94.2,48.9 74.3,64.6 81.2,89.1 60.0,75.0 38.8,89.1 45.7,64.6 25.8,48.9 51.2,47.9" fill="#F7EEDF"/><circle cx="60" cy="60" r="6" fill="#E8591F"/>'},
     signpost:{label:'Signpost',bg:'#BF430C',svg:'<rect x="57" y="24" width="6" height="76" rx="2" fill="#F7EEDF"/><path d="M34 30h44l11 10-11 10H34z" fill="#F7EEDF"/><path d="M86 56H44L33 66l11 10h42z" fill="#F6C9AE"/><rect x="40" y="98" width="40" height="4" rx="2" fill="#F7EEDF" opacity=".5"/>'},
     nofine:{label:'No fines',bg:'#2E6646',svg:'<circle cx="60" cy="60" r="30" fill="#F7EEDF"/><circle cx="60" cy="60" r="23" fill="none" stroke="#2E6646" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/><path d="M60 43v34M68 51c-2-3-5-4-8-4-5 0-8 3-8 6 0 8 16 5 16 13 0 4-4 7-9 7-4 0-7-2-9-5" fill="none" stroke="#2E6646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect class="strike" x="18" y="55" width="84" height="10" rx="5" fill="#16151A" transform="rotate(-38 60 60)"/>'}
   };
@@ -231,9 +231,9 @@
       fields:[ANCHOR,{key:'heading',label:'Heading',type:'text'},{key:'text',label:'Text',type:'textarea'},
         {key:'buttons',label:'Buttons',type:'list',itemLabel:'label',noun:'button',fields:[{key:'label',label:'Button text',type:'text'},{key:'url',label:'Goes to',type:'text'}],make:function(){return {label:'Learn more',url:'#'}}},
         COLOR('bg','Background colour'),COLOR('ink','Text colour')],
-      make:function(){return {type:'cta',anchor:'',heading:'Get involved',text:'',buttons:[],bg:'#2C0E78',ink:'#F7EEDF'}},
+      make:function(){return {type:'cta',anchor:'',heading:'Get involved',text:'',buttons:[],bg:'#102A4C',ink:'#F7EEDF'}},
       render:function(b){
-        return '<section class="band"'+id(b)+'><div class="wrap"><div class="cta-box" style="'+col(b.bg||'#2C0E78',b.ink||'#F7EEDF')+'">'+glassLeaf()+'<div><h2>'+esc(b.heading)+'</h2>'+paras(b.text)+
+        return '<section class="band"'+id(b)+'><div class="wrap"><div class="cta-box" style="'+col(b.bg||'#102A4C',b.ink||'#F7EEDF')+'">'+glassLeaf()+'<div><h2>'+esc(b.heading)+'</h2>'+paras(b.text)+
           ((b.buttons||[]).length?'<p class="cta-btns">'+b.buttons.map(function(x,i){return '<a class="btn'+(i?' alt':'')+'" href="'+esc(x.url||'#')+'">'+esc(x.label)+'</a>'}).join('')+'</p>':'')+'</div></div></div></section>';
       }},
 
@@ -242,7 +242,7 @@
         {key:'items',label:'People',type:'list',itemLabel:'name',noun:'person',fields:[{key:'name',label:'Name',type:'text'},{key:'role',label:'Role (optional)',type:'text'}],make:function(){return {name:'',role:''}}}],
       make:function(){return {type:'people',anchor:'',heading:'Our board',text:'',items:[]}},
       render:function(b){
-        var cols=['#2C0E78','#BF430C','#7A1B2E','#2E6646'];
+        var cols=['#102A4C','#BF430C','#7A1B2E','#2E6646'];
         return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+(b.text?'<div class="people-text">'+paras(b.text)+'</div>':'')+'<ul class="people">'+(b.items||[]).map(function(p,i){
           var ini=String(p.name||'').trim().split(/\s+/).map(function(w){return w.charAt(0)}).slice(0,2).join('').toUpperCase();
           return '<li class="person"><span class="ini" style="--c:'+cols[i%cols.length]+'" aria-hidden="true">'+esc(ini)+'</span><span><strong>'+esc(p.name)+'</strong>'+(p.role?'<span class="role">'+esc(p.role)+'</span>':'')+'</span></li>';
@@ -288,6 +288,16 @@
         }).join('')+'</div></div></section>';
       }},
 
+    spotlight:{label:'Photo with a short story',
+      fields:[ANCHOR,{key:'heading',label:'Heading',type:'text'},{key:'text',label:'Text (blank line between paragraphs)',type:'textarea'},{key:'src',label:'Photo',type:'image'},{key:'alt',label:'Describe the photo (for people who can\u2019t see it)',type:'text'},
+        {key:'zoom',label:'Zoom into the photo (100 = whole picture)',type:'text'},{key:'x',label:'Slide left to right (0 to 100)',type:'text'},{key:'y',label:'Slide top to bottom (0 to 100)',type:'text'},COLOR('bg','Background colour'),COLOR('ink','Text colour')],
+      make:function(){return {type:'spotlight',anchor:'',heading:'A closer look',text:'',src:'',alt:'',zoom:'100',x:'50',y:'50',bg:'#102A4C',ink:'#F7EEDF'}},
+      render:function(b){
+        var z=parseFloat(b.zoom)||100,x=parseFloat(b.x),y=parseFloat(b.y);if(!isFinite(x))x=50;if(!isFinite(y))y=50;
+        var photo=b.src?'<div class="spot-photo" role="img" aria-label="'+esc(b.alt)+'" style="background-image:url(&quot;'+esc(String(b.src).replace(/["\\]/g,''))+'&quot;);background-size:'+Math.max(z,100)+'% auto;background-position:'+x+'% '+y+'%"></div>':'';
+        return '<section class="band"'+id(b)+'><div class="wrap"><div class="spot'+(photo?'':' no-photo')+'" style="'+col(b.bg||'#102A4C',b.ink||'#F7EEDF')+'">'+photo+'<div class="spot-text"><h2>'+esc(b.heading)+'</h2>'+paras(b.text)+'</div></div></div></section>';
+      }},
+
     banner:{label:'Colour banner with a button',
       fields:[{key:'text',label:'Text',type:'textarea'},{key:'linkLabel',label:'Button text',type:'text'},{key:'url',label:'Button address',type:'text'},COLOR('bg','Background colour'),COLOR('ink','Text colour')],
       make:function(){return {type:'banner',text:'Something worth knowing.',linkLabel:'Learn more',url:'#',bg:'#24456E',ink:'#F3ECD6'}},
@@ -302,7 +312,7 @@
   /* sections ease up into place the first time they scroll into view; skipped for people who ask for less motion */
   function reveal(app){
     if(!('IntersectionObserver' in window)||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))return;
-    var els=app.querySelectorAll('main h2, main .kicker, .ph-text, .welcome > div:last-child, .tile, .note-card, .person, .fold, .visit > div, .cta-box, .banner, .pic, .quote, .gallery figure, .cal-body');
+    var els=app.querySelectorAll('main h2, main .kicker, .ph-text, .welcome > div:last-child, .tile, .note-card, .person, .fold, .visit > div, .cta-box, .banner, .pic, .spot, .quote, .gallery figure, .cal-body');
     /* nothing is ever hidden while it waits: the animation only starts once the element is actually on screen */
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(en){
