@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baldwin City Public Library</title>
+<meta name="description" content="Books, movies, digital materials and programs for all ages in Baldwin City, Kansas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
+<script>try{if(localStorage.getItem('lamp')==='on')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<link rel="stylesheet" href="styles.css?v=29">
+</head>
+<body data-page="home">
+<div id="app"></div>
+<script src="js/content.js?v=29"></script>
+<script src="js/store.js?v=29"></script>
+<script src="js/shelf.js?v=29"></script>
+<script src="js/blocks.js?v=29"></script>
+<script>
+(function(){
+  var slug=document.body.dataset.page||new URLSearchParams(location.search).get('p')||'home';
+  renderPage(document.getElementById('app'),Store.load(),slug);
+  if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView()}
+})();
+</script>
+</body>
+</html>
