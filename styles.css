@@ -1,7 +1,7 @@
 /* Layout: headline top-left, one flat row of bright spines standing on a single ink line, catalog card and date-due slip beneath it. */
 :root{
-  --bg:#FAF4E8; --ink:#1F1A14; --muted:#6B6052; --rule:#E7DCC8; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#B5410F; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
-  --card:#FFFDF8; --card-ink:#1F1A14; --card-rule:#E7DCC8; --stamp:#B8352B;
+  --bg:#FAF4E8; --ink:#1F1A14; --muted:#635848; --rule:#E2D5BD; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#A3390B; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
+  --card:#F1E7D3; --card-ink:#1F1A14; --card-rule:#DCCDB0; --stamp:#B8352B;
   --label:#FFFFFF; --label-ink:#1A1917;
   --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
   --body:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
