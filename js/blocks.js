@@ -197,7 +197,7 @@
       render:function(b){
         return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="notes">'+(b.items||[]).map(function(c,i,all){
           var pic=c.photo?'<span class="art"><img src="'+esc(c.photo)+'" alt=""></span>':artHtml(c.art);
-          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div>'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3>'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
+          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div class="nc-head">'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3></div><div class="nc-body">'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
         }).join('')+'</div></div></section>';
       }},
 

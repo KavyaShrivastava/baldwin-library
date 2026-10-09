@@ -1,7 +1,7 @@
 /* Layout: headline top-left, one flat row of bright spines standing on a single ink line, catalog card and date-due slip beneath it. */
 :root{
-  --bg:#FBEBE2; --ink:#1F1714; --muted:#6A5850; --rule:#EDD3C6; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#B5410F; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
-  --card:#FFFFFF; --card-ink:#1F1714; --card-rule:#EDD3C6; --stamp:#B8352B;
+  --bg:#FAF4E8; --ink:#1F1A14; --muted:#6B6052; --rule:#E7DCC8; --accent:#3A1C86; --orange:#E8591F; --orange-ink:#B5410F; --indigo:#2C0E78; --logo-bg:transparent; color-scheme:light;
+  --card:#FFFDF8; --card-ink:#1F1A14; --card-rule:#E7DCC8; --stamp:#B8352B;
   --label:#FFFFFF; --label-ink:#1A1917;
   --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
   --body:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -18,7 +18,7 @@ a{color:inherit}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:1.25rem;border-bottom:1px solid var(--rule)}
 .stripe{height:.45rem;background:linear-gradient(90deg,var(--indigo) 0 72%,var(--orange) 72%)}
 .mark img{display:block;height:clamp(2.5rem,5vw,3.3rem);width:auto;background:var(--logo-bg);border-radius:.4rem}
-.mark{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
+.mark{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
 .links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;font-size:.95rem;font-weight:500}
 .links a{text-decoration:none}
 .links a:hover{text-decoration:underline;text-underline-offset:.3em}
@@ -26,7 +26,7 @@ a{color:inherit}
 /* hero */
 .hero{overflow-x:clip;padding-block:clamp(2rem,5vw,3.5rem) clamp(2.5rem,6vw,4.5rem)}
 .eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .9rem}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,8.2vw,5rem);line-height:.95;letter-spacing:-.04em;margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
 @media (min-width:480px){.hero h1{white-space:nowrap}}
 
 
@@ -82,7 +82,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,8.2vw,5rem);l
   padding:1.2rem 1.4rem 1.4rem}
 .card p{margin:0}
 .call{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.06em;color:var(--muted);border:1px solid var(--card-rule);border-radius:999px;padding:.15rem .7rem}
-.ti{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+.ti{font-family:var(--display);font-weight:600;font-size:1.6rem;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
 .au{margin-top:.3rem;font-weight:500;color:var(--muted)}
 .note{margin-top:.8rem;font-size:1.05rem;line-height:1.5}
 .subj{margin-top:.8rem;font-size:.85rem;color:var(--muted)}
@@ -112,8 +112,8 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,8.2vw,5rem);l
 /* ---------- rest of the homepage ---------- */
 section{scroll-margin-top:1rem}
 .band{padding-block:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--rule)}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.035em;margin:0 0 1.2rem;text-wrap:balance}
-h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.15;letter-spacing:-.02em;margin:0}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.035em;margin:0 0 1.2rem;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;letter-spacing:-.02em;margin:0}
 .kicker{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .8rem}
 
 .welcome{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:1.5rem 3rem;align-items:start}
@@ -160,7 +160,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.15;
 .links a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.4em}
 .dcover[hidden]{display:none}
 .banner{background:var(--tb);color:var(--ti);border-radius:.9rem;padding:1.6rem 1.8rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem}
-.banner p{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.2;letter-spacing:-.02em;max-width:36rem;text-wrap:balance}
+.banner p{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.2;letter-spacing:-.02em;max-width:36rem;text-wrap:balance}
 .btn{background:var(--ti);color:var(--tb);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;text-decoration:none;white-space:nowrap}
 .pic{margin:0}
 .pic img{display:block;max-width:100%;border-radius:.9rem}
@@ -201,7 +201,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.15;
 
 .cal-day{margin-top:1.5rem;background:var(--card);color:var(--card-ink);border-radius:.9rem;padding:1.4rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.5rem 2rem;align-items:start}
 .cal-date{display:flex;align-items:center;gap:.8rem;font-weight:600;line-height:1.25}
-.cal-date .big{font-family:var(--display);font-weight:800;font-size:clamp(3rem,8vw,5rem);line-height:.85;letter-spacing:-.04em}
+.cal-date .big{font-family:var(--display);font-weight:600;font-size:clamp(3rem,8vw,5rem);line-height:.85;letter-spacing:-.04em}
 .cal-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
 .cal-list li{display:grid;grid-template-columns:9.5rem minmax(0,1fr) auto;gap:.2rem 1rem;align-items:baseline;padding:.7rem .9rem;border-radius:.5rem;border-left:.5rem solid var(--c);
   background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--card-ink);font-size:1.05rem}
@@ -212,7 +212,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.15;
 
 .cal-agenda{display:none;gap:1.6rem}
 .ag-day h3{display:flex;align-items:center;gap:.7rem;margin:0 0 .6rem;font-family:var(--body);font-size:1.05rem;font-weight:600;letter-spacing:0}
-.ag-day h3 .big{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:.9;letter-spacing:-.04em;min-width:1.2em}
+.ag-day h3 .big{font-family:var(--display);font-weight:600;font-size:2.6rem;line-height:.9;letter-spacing:-.04em;min-width:1.2em}
 .ag-day h3 em{font-style:normal;font-size:.75rem;font-weight:600;background:var(--ink);color:var(--bg);border-radius:999px;padding:.1rem .6rem;margin-left:.6rem}
 .ag-past summary{cursor:pointer;font-weight:600;color:var(--muted);padding:.4rem 0}
 .cal-agenda-in{display:grid;gap:1.6rem;margin-top:1rem}
@@ -312,7 +312,7 @@ main:focus{outline:none}
 .prose>.mini:first-child{margin-top:0}
 .folds{display:grid;gap:.6rem}
 .fold{background:var(--card);border-radius:.6rem;padding:0 1.2rem}
-.fold summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;cursor:pointer;list-style:none;font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em}
+.fold summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;cursor:pointer;list-style:none;font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.02em}
 .fold summary::-webkit-details-marker{display:none}
 .fold summary::after{content:"+";flex:none;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:var(--indigo);color:#F7EEDF;font-family:var(--body);font-weight:500;font-size:1.3rem;line-height:1;transition:rotate .3s}
 .fold[open] summary::after{rotate:45deg}
@@ -330,7 +330,7 @@ main:focus{outline:none}
 .quote .leaf{display:block;width:3.6rem;height:3.6rem;margin-bottom:1.2rem}
 .quote blockquote{margin:0;max-width:46rem}
 .quote p{margin:0 0 1rem;font-size:1.1rem;line-height:1.6}
-.quote p.lead{font-family:var(--display);font-weight:700;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.3;letter-spacing:-.02em}
+.quote p.lead{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.3;letter-spacing:-.02em}
 .quote figcaption{margin-top:1.4rem;font-weight:600}
 .notes{grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
 
@@ -378,3 +378,17 @@ main:focus{outline:none}
 .note-card{grid-column:span var(--span,6)}
 @media (max-width:900px){.note-card{grid-column:span 6}.note-card:last-child:nth-child(odd){grid-column:span 12}}
 @media (max-width:640px){.notes{grid-template-columns:repeat(12,minmax(0,1fr))}.note-card,.note-card:last-child:nth-child(odd){grid-column:span 12}}
+
+/* ---------- notices as aligned rows: picture, then when + title, then the details, every row on the same three lines ---------- */
+.notes{grid-template-columns:minmax(0,1fr);gap:.6rem}
+.notes .note-card,.notes .note-card.has-art{grid-column:auto;display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:.6rem 2rem;align-items:center;padding:1.1rem 1.3rem}
+.notes .note-card.has-art{grid-template-columns:4.5rem minmax(0,22rem) minmax(0,1fr);gap:.6rem 1.4rem}
+.notes .art{width:4.5rem}
+.nc-head .when{margin-bottom:.45rem}
+.nc-body p{margin:0}
+.nc-body p+p{margin-top:.4rem}
+@media (max-width:800px){
+  .notes .note-card{grid-template-columns:minmax(0,1fr)}
+  .notes .note-card.has-art{grid-template-columns:4.5rem minmax(0,1fr)}
+  .notes .note-card.has-art .nc-body{grid-column:2}
+}
