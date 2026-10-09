@@ -452,12 +452,14 @@ body{font-size:1.0625rem}
   .nav .links a{display:block;padding:.95rem .2rem;font-size:1.2rem;font-weight:600;border-top:1px solid var(--rule)}
   .links a[aria-current="page"]{text-decoration:none;color:var(--orange-ink)}
 
-  /* the shelf keeps its books a readable size and scrolls sideways */
+  /* the whole shelf fits the screen: sized from the screen width, no shelf labels, and the smallest titles bumped up */
   .hero{padding-block:1.6rem 2.2rem}
-  .stage{font-size:10.5px;margin-top:0;padding-top:4.6em;overflow-x:auto;overflow-y:hidden;margin-inline:calc(-1 * clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px);scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .stage::-webkit-scrollbar{display:none}
-  .shelf-in{width:max-content;min-width:100%}
-  .row{justify-content:flex-start}
+  .stage{font-size:calc((100vw - 2 * clamp(16px,4vw,40px)) / 47.5);margin-top:4.4em;overflow:visible}
+  .shelf-in{width:auto}
+  .row{justify-content:center}
+  .book{padding:1em 0 .8em;gap:.7em}
+  .lbl{display:none}
+  .st{font-size:max(var(--fs),1.4em)}
   .below{margin-top:1.4rem;gap:1.2rem}
   .lede p{font-size:1.1rem}
   .pager{margin-top:1rem}
