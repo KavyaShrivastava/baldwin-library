@@ -28,7 +28,6 @@
     o.connect(g);g.connect(ctx.destination);o.start(at);o.stop(at+len+.02);
   }
   var play={
-    book:function(){var t=ctx.currentTime;rustle(t,1700,.05,.16);knock(t+.07,150,85,.07,.11)},
     tick:function(){var t=ctx.currentTime;knock(t,520,360,.035,.05)},
     page:function(){var t=ctx.currentTime;rustle(t,2400,.035,.1)},
     lamp:function(){var t=ctx.currentTime;knock(t,900,500,.05,.025);knock(t+.05,700,380,.04,.03)}
@@ -40,7 +39,7 @@
     var t=ev.target;if(!t.closest)return;
     var toggle=t.closest('.sound-toggle');
     if(toggle){on=!on;try{localStorage.setItem('sound',on?'on':'off')}catch(e){}label(toggle);sound('tick');return}
-    if(t.closest('.book')||t.closest('.pager .prev')||t.closest('.pager .next'))return sound('book');
+    if(t.closest('.book')||t.closest('.pager .prev')||t.closest('.pager .next'))return; /* books are silent */
     if(t.closest('.lamp'))return sound('lamp');
     if(t.closest('.fold summary')||t.closest('.day')||t.closest('.cal-view button'))return sound('page');
     if(t.closest('.tile')||t.closest('.btn')||t.closest('.pill')||t.closest('.cal-nav button')||t.closest('.playpause'))return sound('tick');
