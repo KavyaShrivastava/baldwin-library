@@ -356,8 +356,8 @@ main:focus{outline:none}
   --card:#27201A; --card-ink:#F5EEE2; --card-rule:#40372B; --stamp:#E8705F; color-scheme:dark;
 }
 .nav .mark{order:1}
-.nav .links{order:2;flex:1 1 0;min-width:0;justify-content:flex-end}
-.lamp-wrap{order:3;flex:none;display:flex;align-items:center;gap:.5rem}
+.nav .links{order:3;flex:1 1 100%;justify-content:flex-start}
+.lamp-wrap{order:2;margin-left:auto;flex:none;display:flex;align-items:center;gap:.5rem}
 .lamp-hint{font-size:.85rem;font-weight:600;color:var(--orange-ink);white-space:nowrap;animation:nudge 1.2s ease-in-out infinite alternate}
 .lamp-hint[hidden]{display:none}
 @keyframes nudge{to{translate:.3rem 0}}
@@ -371,8 +371,8 @@ main:focus{outline:none}
 .lamp[aria-pressed="true"] .lamp-under{fill:#FFF3DF}
 .mark img{padding:.2rem .35rem}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.7s}
-@media (max-width:900px){
-  .lamp-wrap{order:2;margin-left:auto}
-  .nav .links{order:3;flex:1 1 100%;justify-content:flex-start}
-}
 @media (prefers-reduced-motion:reduce){.lamp,.lamp-under{transition:none}.lamp-hint{animation:none}}
+
+/* ---------- sound switch ---------- */
+.sound-toggle{font:inherit;color:inherit;background:none;border:1.5px solid var(--rule);border-radius:999px;padding:.25rem .8rem;cursor:pointer}
+.sound-toggle:hover{border-color:var(--ink)}

@@ -328,12 +328,13 @@
     var nav='<a class="skip" href="#main">Skip to main content</a><p class="mock">Design mockup. This is not the official '+esc(site.name)+' website.</p><div class="stripe" aria-hidden="true"></div><header class="wrap"><nav class="nav" aria-label="Main"><a class="mark" href="index.html">'+(site.logo?'<img src="'+esc(site.logo)+'" alt="'+esc(site.name)+'">':esc(site.name))+'</a><div class="links">'+
       ((site.nav||[]).some(function(n){return n.url==='index.html'})?[]:[{label:'Home',url:'index.html'}]).concat(site.nav||[]).map(function(n,i,all){return '<a href="'+esc(n.url)+'"'+(n.url===here?' aria-current="page"':'')+'>'+esc(n.label)+'</a>'}).join('')+'</div>'+
       '<div class="lamp-wrap"><span class="lamp-hint" aria-hidden="true">Click me <span>&rarr;</span></span><button type="button" class="lamp" aria-pressed="false" aria-label="Turn the lamp on (night colours)"><svg viewBox="0 0 120 190" aria-hidden="true"><path class="lamp-base" d="M28 188 Q28 171 60 171 Q92 171 92 188 Z"/><circle class="lamp-knob" cx="60" cy="17" r="5"/><path class="lamp-shade" d="M8 86 Q7 23 60 20 Q113 23 112 86 Z"/><ellipse class="lamp-under" cx="60" cy="86" rx="52" ry="7"/><rect class="lamp-stem" x="55.5" y="86" width="9" height="88"/></svg></button></div></nav></header>';
-    var foot='<footer class="wrap foot"><span>'+esc(site.name)+(site.tagline?' &middot; '+esc(site.tagline):'')+'</span>'+(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?'<nav aria-label="Footer"><a href="admin.html">Staff sign-in</a></nav>':'')+'</footer>';
+    var foot='<footer class="wrap foot"><span>'+esc(site.name)+(site.tagline?' &middot; '+esc(site.tagline):'')+'</span>'+'<button type="button" class="sound-toggle" aria-pressed="true">Sound: on</button>'+(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?'<nav aria-label="Footer"><a href="admin.html">Staff sign-in</a></nav>':'')+'</footer>';
     if(!page){app.innerHTML=nav+'<main id="main" tabindex="-1"><section class="band"><div class="wrap"><h1>Page not found</h1><p><a href="index.html">Back to the homepage</a></p></div></section></main>'+foot;return}
     document.title=(slug==='home'?'':page.title+' \u00b7 ')+site.name;
     app.innerHTML=nav+'<main id="main" tabindex="-1">'+page.blocks.map(function(b,i){var d=window.BLOCKS[b.type];return d?'<div data-block="'+i+'">'+d.render(b,site)+'</div>':''}).join('')+'</main>'+foot;
     page.blocks.forEach(function(b,i){var d=window.BLOCKS[b.type];if(d&&d.mount)d.mount(app.querySelector('[data-block="'+i+'"]'),b,site)});
     reveal(app);
     lamp(app);
+    if(window.initSoundToggle)window.initSoundToggle(app);
   };
 })();
