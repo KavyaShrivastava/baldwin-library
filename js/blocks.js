@@ -133,7 +133,8 @@
       else if(ds.d){key='[data-d="'+ds.d+'"]';sel=ds.d}
       else return;
       draw();
-      var again=root.querySelector(key);if(again)again.focus();
+      var again=root.querySelector(key);if(again)again.focus({preventScroll:true});
+      if(ds.d&&window.matchMedia('(max-width:760px)').matches)root.querySelector('.cal-day').scrollIntoView({behavior:'smooth',block:'nearest'});
     });
     root.addEventListener('change',function(ev){
       var t=ev.target;if(!t.matches||!t.matches('input[data-cat]'))return;
@@ -161,7 +162,7 @@
         return '<section class="hero"'+id(b)+'><div class="wrap">'+
           (b.eyebrow?'<p class="eyebrow">'+esc(b.eyebrow)+'</p>':'')+
           '<h1>'+esc(b.title)+'</h1>'+
-          '<div class="stage"><div class="row"></div><div class="plank"></div></div>'+
+          '<div class="stage"><div class="shelf-in"><div class="row"></div><div class="plank"></div></div></div>'+
           '<div class="below"><div class="lede"><p>'+esc(b.lede)+'</p>'+(b.linkLabel?'<a href="'+esc(b.linkUrl||'#')+'">'+esc(b.linkLabel)+'</a>':'')+
           '<div class="pager"><button type="button" class="prev" aria-label="Previous book">&larr;</button><button type="button" class="next" aria-label="Next book">&rarr;</button></div></div>'+
           '<div class="detail"><img class="dcover" alt=""><aside class="card" aria-label="Selected book"><div class="entry"><p class="ti"></p><p class="au"></p><p class="note"></p></div></aside></div></div>'+
@@ -202,7 +203,7 @@
       render:function(b){
         return '<section class="band"'+id(b)+'><div class="wrap">'+head(b)+'<div class="notes">'+(b.items||[]).map(function(c,i,all){
           var pic=c.photo?'<span class="art"><img src="'+esc(c.photo)+'" alt=""></span>':artHtml(c.art);
-          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div class="nc-head">'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3></div><div class="nc-body">'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.more?'<p class="nc-extra">'+esc(c.more)+'</p>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
+          return '<article class="note-card'+(pic?' has-art':'')+'" style="--span:'+rowSpan(i,all.length,3)+'">'+pic+'<div class="nc-head">'+(c.tag?'<span class="when">'+esc(c.tag)+'</span>':'')+'<h3>'+esc(c.title)+'</h3></div><div class="nc-body">'+(c.text?'<p>'+esc(c.text)+'</p>':'')+(c.more?'<details class="nc-more"><summary>Read more</summary><p class="nc-extra">'+esc(c.more)+'</p></details>':'')+(c.linkLabel?'<p><a href="'+esc(c.url||'#')+'">'+esc(c.linkLabel)+'</a></p>':'')+'</div></article>';
         }).join('')+'</div></div></section>';
       }},
 
@@ -310,17 +311,12 @@
   /* the lamp in the menu: off is the normal daytime site, on switches every page to night colours; the choice is remembered */
   function lamp(app){
     var btn=app.querySelector('.lamp');if(!btn)return;
-    /* the "Click me" note shows until the lamp has been tried once */
-    var hint=app.querySelector('.lamp-hint'),used=false;
-    try{used=localStorage.getItem('lamp')!==null}catch(e){}
-    if(hint&&used)hint.hidden=true;
     function show(){
       var lit=document.documentElement.dataset.theme==='dark';
       btn.setAttribute('aria-pressed',lit?'true':'false');
       btn.setAttribute('aria-label',lit?'Turn off dark mode':'Turn on dark mode');
     }
     btn.addEventListener('click',function(){
-      if(hint)hint.hidden=true;
       var flip=function(){
         var lit=document.documentElement.dataset.theme==='dark';
         if(lit)delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme='dark';
@@ -336,9 +332,9 @@
   window.renderPage=function(app,site,slug){
     var page=(site.pages||[]).filter(function(p){return p.slug===slug})[0];
     var here=window.Store.pageUrl(slug);
-    var nav='<a class="skip" href="#main">Skip to main content</a><p class="mock">Design mockup. This is not the official '+esc(site.name)+' website.</p><div class="stripe" aria-hidden="true"></div><header class="wrap"><nav class="nav" aria-label="Main"><a class="mark" href="index.html">'+(site.logo?'<img src="'+esc(site.logo)+'" alt="'+esc(site.name)+'">':esc(site.name))+'</a><div class="links">'+
+    var nav='<a class="skip" href="#main">Skip to main content</a><p class="mock">Design mockup. This is not the official '+esc(site.name)+' website.</p><div class="stripe" aria-hidden="true"></div><header class="wrap"><nav class="nav" aria-label="Main"><a class="mark" href="index.html">'+(site.logo?'<img src="'+esc(site.logo)+'" alt="'+esc(site.name)+'">':esc(site.name))+'</a><div class="links" id="site-menu">'+
       ((site.nav||[]).some(function(n){return n.url==='index.html'})?[]:[{label:'Home',url:'index.html'}]).concat(site.nav||[]).map(function(n,i,all){return '<a href="'+esc(n.url)+'"'+(n.url===here?' aria-current="page"':'')+'>'+esc(n.label)+'</a>'}).join('')+'</div>'+
-      '<div class="lamp-wrap"><span class="lamp-hint" aria-hidden="true">Click for dark mode <span>&rarr;</span></span><button type="button" class="lamp" aria-pressed="false" aria-label="Turn on dark mode"><svg viewBox="0 0 120 190" aria-hidden="true"><path class="lamp-base" d="M28 188 Q28 171 60 171 Q92 171 92 188 Z"/><circle class="lamp-knob" cx="60" cy="17" r="5"/><path class="lamp-shade" d="M8 86 Q7 23 60 20 Q113 23 112 86 Z"/><ellipse class="lamp-under" cx="60" cy="86" rx="52" ry="7"/><rect class="lamp-stem" x="55.5" y="86" width="9" height="88"/></svg></button></div></nav></header>';
+      '<div class="lamp-wrap"><button type="button" class="lamp" aria-pressed="false" aria-label="Turn on dark mode"><svg viewBox="0 0 120 190" aria-hidden="true"><path class="lamp-base" d="M28 188 Q28 171 60 171 Q92 171 92 188 Z"/><circle class="lamp-knob" cx="60" cy="17" r="5"/><path class="lamp-shade" d="M8 86 Q7 23 60 20 Q113 23 112 86 Z"/><ellipse class="lamp-under" cx="60" cy="86" rx="52" ry="7"/><rect class="lamp-stem" x="55.5" y="86" width="9" height="88"/></svg></button></div><button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-menu">Menu</button></nav></header>';
     var foot='<footer class="wrap foot"><span>'+esc(site.name)+(site.tagline?' &middot; '+esc(site.tagline):'')+'</span>'+(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?'<nav aria-label="Footer"><a href="admin.html">Staff sign-in</a></nav>':'')+'</footer>';
     if(!page){app.innerHTML=nav+'<main id="main" tabindex="-1"><section class="band"><div class="wrap"><h1>Page not found</h1><p><a href="index.html">Back to the homepage</a></p></div></section></main>'+foot;return}
     document.title=(slug==='home'?'':page.title+' \u00b7 ')+site.name;
@@ -346,5 +342,15 @@
     page.blocks.forEach(function(b,i){var d=window.BLOCKS[b.type];if(d&&d.mount)d.mount(app.querySelector('[data-block="'+i+'"]'),b,site)});
     reveal(app);
     lamp(app);
+    /* notices: the fuller details sit open on big screens and behind "Read more" on phones */
+    var wide=window.matchMedia('(min-width:761px)');
+    var setMore=function(){[].forEach.call(app.querySelectorAll('.nc-more'),function(d){d.open=wide.matches})};
+    setMore();if(wide.addEventListener)wide.addEventListener('change',setMore);
+    /* phones: the menu opens and closes from one button */
+    var mb=app.querySelector('.menu-btn'),nv=app.querySelector('.nav');
+    if(mb)mb.addEventListener('click',function(){
+      var open=nv.classList.toggle('open');
+      mb.setAttribute('aria-expanded',open?'true':'false');mb.textContent=open?'Close':'Menu';
+    });
   };
 })();

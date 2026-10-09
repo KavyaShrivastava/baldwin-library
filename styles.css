@@ -373,12 +373,6 @@ main:focus{outline:none}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.7s}
 @media (prefers-reduced-motion:reduce){.lamp,.lamp-under{transition:none}.lamp-hint{animation:none}}
 
-/* ---------- notice cards: balanced rows, like the tiles ---------- */
-.notes{grid-template-columns:repeat(12,minmax(0,1fr))}
-.note-card{grid-column:span var(--span,6)}
-@media (max-width:900px){.note-card{grid-column:span 6}.note-card:last-child:nth-child(odd){grid-column:span 12}}
-@media (max-width:640px){.notes{grid-template-columns:repeat(12,minmax(0,1fr))}.note-card,.note-card:last-child:nth-child(odd){grid-column:span 12}}
-
 /* ---------- notices as aligned rows: picture, then when + title, then the details, every row on the same three lines ---------- */
 .notes{grid-template-columns:minmax(0,1fr);gap:.6rem}
 .notes .note-card,.notes .note-card.has-art{grid-column:auto;display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:.6rem 2rem;align-items:center;padding:1.1rem 1.3rem}
@@ -443,3 +437,87 @@ body{font-size:1.0625rem}
   .cta-btns .btn{flex:1 1 100%}
   .cta-box .leaf{width:4.5rem}
 }
+
+/* ================= phones ================= */
+.menu-btn{display:none}
+@media (max-width:760px){
+  .mock{font-size:.75rem;padding:.35rem .8rem}
+  .nav{padding-block:.8rem;gap:.6rem}
+  .mark img{height:2.6rem}
+  .lamp{height:2.8rem}
+  .lamp-wrap{order:2;margin-left:auto}
+  .menu-btn{display:inline-flex;order:2;align-items:center;font:600 1rem var(--body);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.6rem 1.2rem;cursor:pointer}
+  .nav .links{display:none;order:3;flex:1 1 100%;flex-direction:column;flex-wrap:nowrap;gap:0;margin-top:.4rem}
+  .nav.open .links{display:flex}
+  .nav .links a{display:block;padding:.95rem .2rem;font-size:1.2rem;font-weight:600;border-top:1px solid var(--rule)}
+  .links a[aria-current="page"]{text-decoration:none;color:var(--orange-ink)}
+
+  /* the shelf keeps its books a readable size and scrolls sideways */
+  .hero{padding-block:1.6rem 2.2rem}
+  .stage{font-size:10.5px;margin-top:0;padding-top:4.6em;overflow-x:auto;overflow-y:hidden;margin-inline:calc(-1 * clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .stage::-webkit-scrollbar{display:none}
+  .shelf-in{width:max-content;min-width:100%}
+  .row{justify-content:flex-start}
+  .below{margin-top:1.4rem;gap:1.2rem}
+  .lede p{font-size:1.1rem}
+  .pager{margin-top:1rem}
+  .pager button{padding:.6rem 1.3rem;font-size:1.1rem}
+  .detail{grid-template-columns:6.5rem minmax(0,1fr)}
+  .ti{font-size:1.35rem}
+
+  .band{padding-block:2.4rem}
+  .band h2{margin-bottom:1.1rem}
+  .tile{min-height:0;gap:.9rem;padding:1.1rem 1.2rem}
+  .tiles.bold .leaf{width:2.6rem;height:2.6rem;margin-bottom:.7rem}
+  .notes .note-card,.notes .note-card.has-art{padding:1.2rem;gap:.7rem 1rem}
+  .note-card h3{font-size:1.25rem}
+  .nc-body p{font-size:1.1rem}
+  .cal-top{align-items:start}
+  .cal-tools{width:100%;justify-content:space-between}
+  .cal-list li{padding:.8rem .9rem}
+  .person{padding:.7rem .9rem}
+  .quote,.cta-box{padding:1.4rem}
+  .foot{padding-block:1.2rem 2rem}
+}
+
+/* notices: "Read more" only exists on phones */
+.nc-more summary{display:none}
+.nc-more .nc-extra{margin-top:.8rem}
+@media (max-width:760px){
+  .notes .note-card.has-art{grid-template-columns:3.4rem minmax(0,1fr);align-items:center}
+  .notes .art{width:3.4rem}
+  .notes .note-card .nc-body,.notes .note-card.has-art .nc-body{grid-column:1 / -1}
+  .nc-head .when{font-size:1rem}
+  .nc-more{margin-top:.5rem}
+  .nc-more summary{display:inline-block;list-style:none;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--ink);text-decoration:underline;text-underline-offset:.25em;padding:.5rem 0}
+  .nc-more summary::-webkit-details-marker{display:none}
+  .nc-more[open] summary{display:none}
+  .nc-more .nc-extra{margin-top:.2rem;font-size:1.05rem}
+}
+
+/* long words and addresses never push a box wider than the screen */
+main{overflow-wrap:break-word}
+.banner p{min-width:0;overflow-wrap:anywhere}
+@media (max-width:760px){
+  .banner{padding:1.3rem}
+  .banner p{font-size:1.15rem}
+  .banner .btn{width:100%}
+
+  /* phones: the full month is a small grid of dates with a colour dot per program; tap a date to read that day underneath */
+  .cal-scroll{overflow:visible}
+  .cal-grid{min-width:0;gap:.25rem}
+  .dow{padding:.2rem 0;text-align:center;letter-spacing:.02em;font-size:.7rem}
+  .day{min-height:3.6rem;padding:.3rem .1rem;align-items:center;gap:.25rem}
+  .num{font-size:1rem;width:1.9rem;height:1.9rem}
+  .chips{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:.16rem}
+  .chip{width:.5rem;height:.5rem;padding:0;border:0;border-radius:50%;background:var(--c);font-size:0;line-height:0}
+  .chip b{display:none}
+  .cal-day{grid-template-columns:minmax(0,1fr);padding:1.1rem;gap:1rem;scroll-margin-top:.8rem}
+  .cal-date .big{font-size:2.8rem}
+  .cal-filters{gap:.5rem 1.2rem}
+  .filt{font-size:1.05rem}
+  .filt input{width:1.3rem;height:1.3rem}
+}
+
+/* every notice is one full-width row, whatever older rules said */
+.notes .note-card,.notes .note-card:last-child:nth-child(odd){grid-column:1 / -1}

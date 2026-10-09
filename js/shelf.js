@@ -42,7 +42,14 @@ window.initShelf=function(root,books){
     if(animate&&!reduced){card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap')}
   }
   function putBack(){els.forEach(function(e){e.setAttribute('aria-pressed','false')})}
-  function select(i,animate){putBack();cur=i;els[i].setAttribute('aria-pressed','true');fillCard(i,animate!==false)}
+  function select(i,animate){
+    putBack();cur=i;els[i].setAttribute('aria-pressed','true');fillCard(i,animate!==false);
+    /* on phones the shelf is wider than the screen: bring the chosen book to the middle (sideways only) */
+    if(stage.scrollWidth>stage.clientWidth+2){
+      var slot=els[i].parentNode,left=slot.offsetLeft-(stage.clientWidth-slot.offsetWidth)/2;
+      if(stage.scrollTo)stage.scrollTo({left:Math.max(0,left),behavior:reduced?'auto':'smooth'});else stage.scrollLeft=Math.max(0,left);
+    }
+  }
   function toggle(i){if(els[i].getAttribute('aria-pressed')==='true'){putBack()}else{select(i)}}
   function step(n){select((cur+n+books.length)%books.length)}
   function schedule(){
