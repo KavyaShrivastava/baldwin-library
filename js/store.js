@@ -11,6 +11,12 @@ window.Store=(function(){
         (s.nav||[]).forEach(function(n){if(new RegExp('mykansaslibrary\\.org/'+p.slug+'/?$').test(n.url))n.url=FILES[p.slug]||n.url});
       }
     });
+    /* link cards saved with any of the earlier paper-card colour sets go back to the original solid colours */
+    var BLOCK=[['#102A4C','#F3ECD6'],['#BF430C','#FFF6EA'],['#2E6646','#F2F8EE'],['#7A1B2E','#FBE3E6'],['#4A5568','#F3ECD6']];
+    var OLD={'#7CC4E6':0,'#2B4F80':0,'#2F62B0':0,'#FFA3C2':1,'#A63D40':1,'#CF4A45':1,'#F4E3A1':2,'#5E8F6B':2,'#58A06A':2,'#F9A56E':3,'#D9692B':3,'#F0702B':3,'#C6DDB4':4,'#DDB48A':4,'#E6B57C':4};
+    s.pages.forEach(function(p){(p.blocks||[]).forEach(function(b){
+      if(b.type==='tiles'&&!b.look)(b.items||[]).forEach(function(t){var n=OLD[String(t.bg||'').toUpperCase()];if(n!==undefined){t.bg=BLOCK[n][0];t.ink=BLOCK[n][1];delete t.bg2}});
+    })});
     return s;
   }
   return {

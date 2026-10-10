@@ -1,9 +1,9 @@
 /* Layout: headline top-left, one flat row of bright spines standing on a single ink line, catalog card and date-due slip beneath it. */
 :root{
   --bg:#FAF4E8; --ink:#1F1A14; --muted:#635848; --rule:#E2D5BD; --accent:#102A4C; --orange:#E8591F; --orange-ink:#A3390B; --indigo:#102A4C; --logo-bg:transparent; color-scheme:light;
-  --card:#F1E7D3; --card-ink:#1F1A14; --card-rule:#DCCDB0; --stamp:#B8352B;
+  --card:#F1E7D3; --frame:#2B4F80; --sticker:#FDFCFA; --card-ink:#1F1A14; --card-rule:#DCCDB0; --stamp:#B8352B;
   --label:#FFFFFF; --label-ink:#1A1917;
-  --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif; --title:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
   --body:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   --type:"Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   --cond:"Antonio","Arial Narrow","Helvetica Neue",Arial,sans-serif;
@@ -18,15 +18,15 @@ a{color:inherit}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:1.25rem;border-bottom:1px solid var(--rule)}
 .stripe{height:.45rem;background:linear-gradient(90deg,#102A4C 0 72%,var(--orange) 72%)}
 .mark img{display:block;height:clamp(2.5rem,5vw,3.3rem);width:auto;background:var(--logo-bg);border-radius:.4rem}
-.mark{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
-.links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;font-size:.95rem;font-weight:500}
+.mark{font-family:var(--display);font-weight:500;font-size:1.3rem;letter-spacing:-.02em;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;font-size:1.02rem;font-weight:500}
 .links a{text-decoration:none}
 .links a:hover{text-decoration:underline;text-underline-offset:.3em}
 
 /* hero */
 .hero{overflow-x:clip;padding-block:clamp(2rem,5vw,3.5rem) clamp(2.5rem,6vw,4.5rem)}
-.eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .9rem}
-h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.eyebrow{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .9rem}
+h1{font-family:var(--title);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
 @media (min-width:480px){.hero h1{white-space:nowrap}}
 
 
@@ -34,7 +34,7 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);l
 .stage{font-size:clamp(6.4px,1.8vw,17px);margin-top:4em}
 @media (min-width:700px){.stage{font-size:clamp(9px,1.4vw,15px)}}
 .row{display:flex;align-items:flex-end;justify-content:center;gap:.14em}
-.plank{height:.7em;background:var(--orange);border-radius:.35em}
+.plank{height:.7em;background:var(--indigo);border-radius:.35em}
 @keyframes shelve{from{translate:80em 0}}
 
 .slot{flex:none;width:var(--t);height:var(--h);transform-origin:0 100%;
@@ -58,8 +58,9 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);l
 .p-cap::before{content:"";width:100%;height:3.4em;margin-top:-1.2em;background:var(--ac)}
 .p-dot::before{content:"";width:58%;aspect-ratio:1;border-radius:50%;background:var(--ac)}
 .st{flex:1;min-height:0;writing-mode:vertical-rl;text-align:center;text-wrap:balance;line-height:1.05;font-size:var(--fs)}
-.serif .st{font-family:var(--display);font-weight:700;letter-spacing:-.02em}
-.cond .st{font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+/* spine lettering uses the site's two heading fonts: the thin title font on some books, the small-heading font in capitals on the others */
+.serif .st{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
+.cond .st{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:calc(var(--fs) * .8)}
 .lbl{flex:none;width:calc(100% - .6em);padding:.35em 0 .25em;background:var(--label);color:var(--label-ink);border-radius:.25em;
   font-family:var(--body);font-weight:700;font-size:.58em;line-height:1.1;text-align:center}
 
@@ -67,7 +68,7 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);l
 .below{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,35rem);gap:2rem 3rem;align-items:start;margin-top:clamp(1.75rem,4vw,3rem)}
 .lede{max-width:27rem}
 .lede p{margin:0 0 1.1rem;font-size:1.15rem;line-height:1.5}
-.lede a{font-weight:600;text-underline-offset:.3em}
+.lede a{font-weight:500;text-underline-offset:.3em}
 .pager{display:flex;align-items:center;gap:.6rem;margin-top:1.6rem;font-size:.9rem;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
 .pager button{font:inherit;color:var(--ink);background:none;border:1.5px solid var(--ink);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
 .pager button:hover{background:var(--orange);border-color:var(--orange);color:#1F1A14}
@@ -81,17 +82,17 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);l
 .card{background:var(--card);color:var(--card-ink);border-radius:.75rem;
   padding:1.2rem 1.4rem 1.4rem}
 .card p{margin:0}
-.call{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.06em;color:var(--muted);border:1px solid var(--card-rule);border-radius:999px;padding:.15rem .7rem}
-.ti{font-family:var(--display);font-weight:600;font-size:1.6rem;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+.call{display:inline-block;font-size:.75rem;font-weight:500;letter-spacing:.06em;color:var(--muted);border:1px solid var(--card-rule);border-radius:999px;padding:.15rem .7rem}
+.ti{font-family:var(--display);font-weight:500;font-size:1.6rem;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
 .au{margin-top:.3rem;font-weight:500;color:var(--muted)}
 .note{margin-top:.8rem;font-size:1.05rem;line-height:1.5}
-.subj{margin-top:.8rem;font-size:.85rem;color:var(--muted)}
+.subj{margin-top:.8rem;font-size:1rem;color:var(--muted)}
 .card.swap .entry,.card.swap .call{animation:swap .4s ease-out}
 @keyframes swap{from{opacity:.2;translate:0 .4rem}}
 
 .slip{background:var(--card);color:var(--card-ink);padding:.9rem .8rem;text-align:center;border-radius:.75rem}
 .slip h2{font:600 .72rem var(--body);letter-spacing:.12em;color:var(--muted);margin:0 0 .5rem;padding-bottom:.45rem;border-bottom:1px solid var(--card-rule)}
-.stamps{list-style:none;margin:0;padding:0;font-weight:700;font-size:.9rem;color:var(--stamp);font-variant-numeric:tabular-nums}
+.stamps{list-style:none;margin:0;padding:0;font-weight:600;font-size:.9rem;color:var(--stamp);font-variant-numeric:tabular-nums}
 .stamps li{padding:.28rem 0;border-bottom:1px solid var(--card-rule)}
 .stamps li:nth-child(1){opacity:.45}
 .stamps li:nth-child(2){opacity:.65}
@@ -112,9 +113,9 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2rem,8.2vw,5rem);l
 /* ---------- rest of the homepage ---------- */
 section{scroll-margin-top:1rem}
 .band{padding-block:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--rule)}
-h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.035em;margin:0 0 1.2rem;text-wrap:balance}
+h2{font-family:var(--title);font-weight:600;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.035em;margin:0 0 1.2rem;text-wrap:balance}
 h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;letter-spacing:-.02em;margin:0}
-.kicker{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .8rem}
+.kicker{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-ink);margin:0 0 .8rem}
 
 .welcome{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:1.5rem 3rem;align-items:start}
 .welcome p{margin:0 0 1rem;font-size:1.15rem;line-height:1.55;max-width:38rem}
@@ -125,18 +126,18 @@ h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;
   background:var(--tb);color:var(--ti);text-decoration:none;transition:translate .3s cubic-bezier(.3,1.4,.4,1)}
 .tile:hover,.tile:focus-visible{translate:0 -.4rem}
 .tile p{margin:.4rem 0 0;font-size:1rem;line-height:1.4}
-.tile .go{font-weight:600;font-size:.9rem}
+.tile .go{font-weight:500;font-size:.9rem}
 
 .notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .note-card{background:var(--card);color:var(--card-ink);border-radius:.75rem;padding:1.3rem 1.4rem 1.4rem}
 .note-card p{margin:.6rem 0 0;line-height:1.5}
-.note-card a{font-weight:600;text-underline-offset:.3em}
-.when{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.06em;color:var(--muted);border:1px solid var(--card-rule);border-radius:999px;padding:.15rem .7rem;margin-bottom:.8rem}
+.note-card a{font-weight:500;text-underline-offset:.3em}
+.when{display:inline-block;font-size:.75rem;font-weight:500;letter-spacing:.06em;color:var(--muted);border:1px solid var(--card-rule);border-radius:999px;padding:.15rem .7rem;margin-bottom:.8rem}
 
 .visit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
 .visit h3{margin-bottom:.8rem}
 .hours{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.5rem;font-variant-numeric:tabular-nums}
-.hours dt{font-weight:600}
+.hours dt{font-weight:500}
 .hours dd{margin:0}
 .visit address{font-style:normal;line-height:1.6}
 .visit ul{list-style:none;margin:0;padding:0;line-height:1.6}
@@ -160,11 +161,11 @@ h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;
 .links a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.4em}
 .dcover[hidden]{display:none}
 .banner{background:var(--tb);color:var(--ti);border-radius:.9rem;padding:1.6rem 1.8rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem}
-.banner p{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.2;letter-spacing:-.02em;max-width:36rem;text-wrap:balance}
-.btn{background:var(--ti);color:var(--tb);border-radius:999px;padding:.6rem 1.2rem;font-weight:600;text-decoration:none;white-space:nowrap}
+.banner p{margin:0;font-family:var(--display);font-weight:500;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.2;letter-spacing:-.02em;max-width:36rem;text-wrap:balance}
+.btn{background:var(--ti);color:var(--tb);border-radius:999px;padding:.6rem 1.2rem;font-weight:500;text-decoration:none;white-space:nowrap}
 .pic{margin:0}
 .pic img{display:block;max-width:100%;border-radius:.9rem}
-.pic figcaption{margin-top:.6rem;font-size:.9rem;color:var(--muted)}
+.pic figcaption{margin-top:.6rem;font-size:1rem;color:var(--muted)}
 .pic-empty{border:2px dashed var(--rule);border-radius:.9rem;padding:3rem 1rem;text-align:center;color:var(--muted)}
 
 /* ---------- page title banner ---------- */
@@ -177,51 +178,51 @@ h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;
 .cal-top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem}
 .cal-month{font-size:clamp(2rem,6vw,3.6rem);margin:0}
 .cal-nav{display:flex;gap:.4rem}
-.cal-nav button{font:500 .9rem var(--body);color:var(--ink);background:none;border:1.5px solid var(--ink);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.cal-nav button{font:500 1rem var(--body);color:var(--ink);background:none;border:1.5px solid var(--ink);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
 .cal-nav button:hover{background:var(--orange);border-color:var(--orange);color:#1F1A14}
 .cal-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.3rem 0 1.5rem}
 .pill{font:600 .9rem var(--body);border-radius:999px;padding:.35rem .95rem;border:2px solid var(--c);background:var(--c);color:var(--k);cursor:pointer;transition:translate .25s cubic-bezier(.3,1.4,.4,1)}
 .pill:hover{translate:0 -.15rem}
 .pill[aria-pressed="false"]{background:transparent;color:var(--muted);text-decoration:line-through}
 .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.4rem}
-.dow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.2rem .5rem}
+.dow{font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.2rem .5rem}
 .day{appearance:none;border:0;margin:0;text-align:left;font:inherit;color:inherit;background:var(--card);border-radius:.6rem;min-height:9rem;min-width:0;padding:.5rem;
   display:flex;flex-direction:column;gap:.4rem;cursor:pointer}
 .day.we{background:color-mix(in srgb,var(--card) 55%,var(--bg))}
 .day.closed{background:color-mix(in srgb,#B8352B 13%,var(--card))}
 .day.blank{background:none;min-height:0;cursor:default}
 .day.sel{outline:2.5px solid var(--ink);outline-offset:-2.5px}
-.num{font-family:var(--display);font-weight:700;font-size:1.15rem;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%}
+.num{font-family:var(--display);font-weight:600;font-size:1.15rem;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%}
 .today .num{background:var(--orange);color:#1F1A14}
 .chips{display:flex;flex-direction:column;gap:.25rem;min-width:0;width:100%}
 /* soft tint with a solid colour bar: the colour says what kind, the text stays dark and readable */
 .chip{display:block;background:color-mix(in srgb,var(--c) 20%,var(--card));color:var(--card-ink);border-left:.3rem solid var(--c);border-radius:.3rem;padding:.25rem .4rem;
   font-size:.85rem;line-height:1.25;overflow-wrap:anywhere}
-.chip b{display:block;font-weight:700;font-size:.78rem}
+.chip b{display:block;font-weight:600;font-size:.78rem}
 
 .cal-day{margin-top:1.5rem;background:var(--card);color:var(--card-ink);border-radius:.9rem;padding:1.4rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.5rem 2rem;align-items:start}
-.cal-date{display:flex;align-items:center;gap:.8rem;font-weight:600;line-height:1.25}
-.cal-date .big{font-family:var(--display);font-weight:600;font-size:clamp(3rem,8vw,5rem);line-height:.85;letter-spacing:-.04em}
+.cal-date{display:flex;align-items:center;gap:.8rem;font-weight:500;line-height:1.25}
+.cal-date .big{font-family:var(--display);font-weight:500;font-size:clamp(3rem,8vw,5rem);line-height:.85;letter-spacing:-.04em}
 .cal-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
 .cal-list li{display:grid;grid-template-columns:9.5rem minmax(0,1fr) auto;gap:.2rem 1rem;align-items:baseline;padding:.7rem .9rem;border-radius:.5rem;border-left:.5rem solid var(--c);
   background:color-mix(in srgb,var(--c) 14%,var(--card));color:var(--card-ink);font-size:1.05rem}
 .cal-list .empty{display:block;border-left-color:var(--rule);background:var(--bg);color:var(--muted)}
-.cal-list .time{font-weight:700;font-variant-numeric:tabular-nums}
-.cal-list .sub{display:block;font-size:.95rem;color:var(--muted)}
-.cal-list .tag{font-size:.78rem;font-weight:600;background:var(--c);color:var(--k);border-radius:999px;padding:.12rem .65rem;white-space:nowrap}
+.cal-list .time{font-weight:600;font-variant-numeric:tabular-nums}
+.cal-list .sub{display:block;font-size:1rem;color:var(--muted)}
+.cal-list .tag{font-size:.78rem;font-weight:500;background:var(--c);color:var(--k);border-radius:999px;padding:.12rem .65rem;white-space:nowrap}
 
 .cal-agenda{display:none;gap:1.6rem}
-.ag-day h3{display:flex;align-items:center;gap:.7rem;margin:0 0 .6rem;font-family:var(--body);font-size:1.05rem;font-weight:600;letter-spacing:0}
-.ag-day h3 .big{font-family:var(--display);font-weight:600;font-size:2.6rem;line-height:.9;letter-spacing:-.04em;min-width:1.2em}
-.ag-day h3 em{font-style:normal;font-size:.75rem;font-weight:600;background:var(--ink);color:var(--bg);border-radius:999px;padding:.1rem .6rem;margin-left:.6rem}
-.ag-past summary{cursor:pointer;font-weight:600;color:var(--muted);padding:.4rem 0}
+.ag-day h3{display:flex;align-items:center;gap:.7rem;margin:0 0 .6rem;font-family:var(--body);font-size:1.05rem;font-weight:500;letter-spacing:0}
+.ag-day h3 .big{font-family:var(--display);font-weight:500;font-size:2.6rem;line-height:.9;letter-spacing:-.04em;min-width:1.2em}
+.ag-day h3 em{font-style:normal;font-size:.75rem;font-weight:500;background:var(--ink);color:var(--bg);border-radius:999px;padding:.1rem .6rem;margin-left:.6rem}
+.ag-past summary{cursor:pointer;font-weight:500;color:var(--muted);padding:.4rem 0}
 .cal-agenda-in{display:grid;gap:1.6rem;margin-top:1rem}
 .empty-month{color:var(--muted)}
 
 /* two views of the same month: a day-by-day list, or the full month grid */
 .cal-tools{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center}
 .cal-view{display:flex;background:var(--card);border-radius:999px;padding:.2rem}
-.cal-view button{font:600 .9rem var(--body);color:var(--ink);background:none;border:0;border-radius:999px;padding:.35rem .95rem;cursor:pointer}
+.cal-view button{font:600 1rem var(--body);color:var(--ink);background:none;border:0;border-radius:999px;padding:.35rem .95rem;cursor:pointer}
 .cal-view button[aria-pressed="true"]{background:var(--indigo);color:#F7EEDF}
 .view-list .cal-grid,.view-list .cal-day{display:none}
 .view-list .cal-agenda{display:grid}
@@ -274,7 +275,7 @@ h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.15;
 @media (prefers-reduced-motion:reduce){.tiles.bold .leaf{transition:none}}
 
 /* ---------- accessibility ---------- */
-.skip{position:absolute;left:1rem;top:-4rem;z-index:10;background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:.4rem;font-weight:600;text-decoration:none}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:10;background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:.4rem;font-weight:500;text-decoration:none}
 .skip:focus{top:.6rem}
 main:focus{outline:none}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -294,9 +295,9 @@ main:focus{outline:none}
 /* ---------- people ---------- */
 .people{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,14rem),1fr));gap:.6rem}
 .person{background:var(--card);border-radius:.6rem;padding:.8rem 1rem;display:flex;gap:.8rem;align-items:center;min-width:0}
-.ini{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--display);font-weight:700;font-size:.95rem}
+.ini{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--display);font-weight:600;font-size:.95rem}
 .person strong{display:block;line-height:1.2}
-.role{display:block;font-size:.9rem;color:var(--muted)}
+.role{display:block;font-size:1rem;color:var(--muted)}
 .people-text p{margin:0 0 1.2rem;max-width:38rem}
 
 /* ---------- structured text and expandable sections ---------- */
@@ -304,11 +305,11 @@ main:focus{outline:none}
 .prose ul{margin:0 0 1.2rem;padding-left:1.2rem;max-width:42rem;line-height:1.5}
 .prose li{margin-bottom:.45rem}
 .prose li::marker{color:var(--orange)}
-.mini{font-family:var(--body);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--orange-ink);margin:1.2rem 0 .5rem}
+.mini{font-family:var(--body);font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--orange-ink);margin:1.2rem 0 .5rem}
 .prose>.mini:first-child{margin-top:0}
 .folds{display:grid;gap:.6rem}
 .fold{background:var(--card);border-radius:.6rem;padding:0 1.2rem}
-.fold summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;cursor:pointer;list-style:none;font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.02em}
+.fold summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;cursor:pointer;list-style:none;font-family:var(--display);font-weight:500;font-size:1.2rem;letter-spacing:-.02em}
 .fold summary::-webkit-details-marker{display:none}
 .fold summary::after{content:"+";flex:none;width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:var(--indigo);color:#F7EEDF;font-family:var(--body);font-weight:500;font-size:1.3rem;line-height:1;transition:rotate .3s}
 .fold[open] summary::after{rotate:45deg}
@@ -319,15 +320,14 @@ main:focus{outline:none}
 .gallery{columns:3 15rem;column-gap:.8rem}
 .gallery figure{margin:0 0 .8rem;break-inside:avoid}
 .gallery img{display:block;width:100%;height:auto;border-radius:.7rem;background:var(--card)}
-.gallery figcaption{margin-top:.4rem;font-size:.9rem;color:var(--muted)}
+.gallery figcaption{margin-top:.4rem;font-size:1rem;color:var(--muted)}
 
-/* ---------- quote ---------- */
-.quote{margin:0;background:var(--tb);color:var(--ti);border-radius:.9rem;padding:clamp(1.5rem,4vw,2.8rem)}
-.quote .leaf{display:block;width:3.6rem;height:3.6rem;margin-bottom:1.2rem}
-.quote blockquote{margin:0;max-width:46rem}
-.quote p{margin:0 0 1rem;font-size:1.1rem;line-height:1.6}
-.quote p.lead{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.3;letter-spacing:-.02em}
-.quote figcaption{margin-top:1.4rem;font-weight:600}
+/* ---------- quote: a magazine pull quote (opening sentence large in the title font), the rest as ordinary text, no box ---------- */
+.quote{margin:0;max-width:46rem}
+.quote blockquote{margin:0}
+.quote p{margin:0 0 1rem;font-size:1.15rem;line-height:1.6;max-width:40rem}
+.quote p.pull{font-family:var(--title);font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.25;letter-spacing:-.01em;max-width:none;margin-bottom:1.6rem;text-wrap:pretty}
+.quote figcaption{margin-top:1.4rem;font-weight:500;color:var(--orange-ink)}
 .notes{grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
 
 /* ---------- tile rows: a 12-part grid so every row fills the width ---------- */
@@ -344,17 +344,17 @@ main:focus{outline:none}
 }
 
 /* ---------- mockup notice ---------- */
-.mock{margin:0;padding:.45rem 1rem;background:var(--ink);color:var(--bg);font-size:.85rem;font-weight:600;text-align:center}
+.mock{margin:0;padding:.45rem 1rem;background:var(--ink);color:var(--bg);font-size:.85rem;font-weight:500;text-align:center}
 
 /* ---------- the lamp: night colours, only when someone switches it on ---------- */
 :root[data-theme="dark"]{
   --bg:#1B1611; --ink:#F5EEE2; --muted:#B5AA99; --rule:#3B3328; --accent:#9DB7E0; --orange:#F26B33; --orange-ink:#FF9A6B; --indigo:#1F447A; --logo-bg:#F7EEDF;
-  --card:#27201A; --card-ink:#F5EEE2; --card-rule:#40372B; --stamp:#E8705F; color-scheme:dark;
+  --card:#27201A; --frame:#9DB7E0; --sticker:#FDFCFA; --card-ink:#F5EEE2; --card-rule:#40372B; --stamp:#E8705F; color-scheme:dark;
 }
 .nav .mark{order:1}
 .nav .links{order:3;flex:1 1 100%;justify-content:flex-start}
 .lamp-wrap{order:2;margin-left:auto;flex:none;display:flex;align-items:center;gap:.5rem}
-.lamp-hint{font-size:.85rem;font-weight:600;color:var(--orange-ink);white-space:nowrap;animation:nudge 1.2s ease-in-out infinite alternate}
+.lamp-hint{font-size:.85rem;font-weight:500;color:var(--orange-ink);white-space:nowrap;animation:nudge 1.2s ease-in-out infinite alternate}
 .lamp-hint[hidden]{display:none}
 @keyframes nudge{to{translate:.3rem 0}}
 .lamp{flex:none;height:3.4rem;aspect-ratio:120/190;padding:0;border:0;background:none;cursor:pointer;transform-origin:50% 100%;transition:scale .3s cubic-bezier(.3,1.4,.4,1)}
@@ -385,7 +385,7 @@ main:focus{outline:none}
 
 /* ---------- the "when" line on a notice: plain text under the title, no outlined bubble ---------- */
 .nc-head{display:flex;flex-direction:column}
-.nc-head .when{order:2;display:block;border:0;border-radius:0;padding:0;margin:.3rem 0 0;font-size:.95rem;font-weight:600;letter-spacing:0;color:var(--orange-ink)}
+.nc-head .when{order:2;display:block;border:0;border-radius:0;padding:0;margin:.3rem 0 0;font-size:.95rem;font-weight:500;letter-spacing:0;color:var(--orange-ink)}
 
 /* ---------- calendar without pills: checkboxes for the filters, a colour square + plain text for each kind ---------- */
 .cal-filters{gap:.4rem 1.4rem}
@@ -404,7 +404,7 @@ body{font-size:1.0625rem}
 .nc-head .when{font-size:1.1rem}
 .nc-body p{font-size:1.2rem;line-height:1.45}
 .nc-more{margin-top:.4rem}
-.nc-more summary{cursor:pointer;font-weight:600;font-size:1.05rem;text-decoration:underline;text-underline-offset:.25em;list-style:none;display:inline-block;padding:.2rem 0}
+.nc-more summary{cursor:pointer;font-weight:500;font-size:1.05rem;text-decoration:underline;text-underline-offset:.25em;list-style:none;display:inline-block;padding:.2rem 0}
 .nc-more summary::-webkit-details-marker{display:none}
 .nc-more[open] summary{margin-bottom:.4rem}
 .nc-more p{font-size:1.1rem;color:var(--card-ink)}
@@ -442,10 +442,10 @@ body{font-size:1.0625rem}
   .mark img{height:2.6rem}
   .lamp{height:2.8rem}
   .lamp-wrap{order:2;margin-left:auto}
-  .menu-btn{display:inline-flex;order:2;align-items:center;font:600 1rem var(--body);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.6rem 1.2rem;cursor:pointer}
+  .menu-btn{display:inline-flex;order:2;align-items:center;font:500 1rem var(--display);background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.6rem 1.2rem;cursor:pointer}
   .nav .links{display:none;order:3;flex:1 1 100%;flex-direction:column;flex-wrap:nowrap;gap:0;margin-top:.4rem}
   .nav.open .links{display:flex}
-  .nav .links a{display:block;padding:.95rem .2rem;font-size:1.2rem;font-weight:600;border-top:1px solid var(--rule)}
+  .nav .links a{display:block;padding:.95rem .2rem;font-size:1.2rem;font-weight:500;border-top:1px solid var(--rule)}
   .links a[aria-current="page"]{text-decoration:none;color:var(--orange-ink)}
 
   /* the whole shelf fits the screen: sized from the screen width, no shelf labels, and the smallest titles bumped up */
@@ -474,7 +474,7 @@ body{font-size:1.0625rem}
   .cal-tools{width:100%;justify-content:space-between}
   .cal-list li{padding:.8rem .9rem}
   .person{padding:.7rem .9rem}
-  .quote,.cta-box{padding:1.4rem}
+  .cta-box{padding:1.4rem}
   .foot{padding-block:1.2rem 2rem}
 }
 
@@ -487,7 +487,7 @@ body{font-size:1.0625rem}
   .notes .note-card .nc-body,.notes .note-card.has-art .nc-body{grid-column:1 / -1}
   .nc-head .when{font-size:1rem}
   .nc-more{margin-top:.5rem}
-  .nc-more summary{display:inline-block;list-style:none;cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--ink);text-decoration:underline;text-underline-offset:.25em;padding:.5rem 0}
+  .nc-more summary{display:inline-block;list-style:none;cursor:pointer;font-weight:500;font-size:1.05rem;color:var(--ink);text-decoration:underline;text-underline-offset:.25em;padding:.5rem 0}
   .nc-more summary::-webkit-details-marker{display:none}
   .nc-more[open] summary{display:none}
   .nc-more .nc-extra{margin-top:.2rem;font-size:1.05rem}
@@ -545,3 +545,461 @@ main{overflow-wrap:break-word}
   .spot-photo{min-height:0;aspect-ratio:4 / 3.6}
   .spot-text{padding:1.4rem}
 }
+
+/* ---------- link rows: one plain picture that says what the link is, the name, one line, and where it goes ---------- */
+.tiles.rows{grid-template-columns:minmax(0,1fr);gap:.6rem}
+.tiles.rows .tile{grid-column:1 / -1;display:grid;grid-template-columns:4rem minmax(0,19rem) minmax(0,1fr) auto;align-items:center;gap:.4rem 1.5rem;
+  min-height:0;padding:1.1rem 1.4rem;background:var(--card);color:var(--card-ink);transition:background .2s}
+.tiles.rows .tile:hover,.tiles.rows .tile:focus-visible{translate:none;background:color-mix(in srgb,var(--indigo) 9%,var(--card))}
+.t-icon{display:block;width:4rem;aspect-ratio:1;border-radius:.6rem;background:var(--indigo)}
+.t-icon svg{display:block;width:100%;height:100%;fill:none;stroke:#F7EEDF;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.t-icon svg .fill{fill:#F7EEDF;stroke:none}
+.tiles.rows .tile h3{font-size:1.4rem}
+.tiles.rows .tile p{margin:0;font-size:1.15rem;line-height:1.4;color:var(--card-ink)}
+.tiles.rows .tile .go{white-space:nowrap;font-weight:500;font-size:1.05rem;text-decoration:underline;text-underline-offset:.25em}
+.tiles.rows .tile .go span{display:inline-block;transition:translate .2s}
+.tiles.rows .tile:hover .go span{translate:.25rem 0}
+@media (max-width:900px){
+  .tiles.rows .tile{grid-template-columns:3.4rem minmax(0,1fr);gap:.2rem 1rem;padding:1.1rem}
+  .t-icon{width:3.4rem;grid-row:1 / span 3;align-self:start}
+  .tiles.rows .tile h3,.tiles.rows .tile p,.tiles.rows .tile .go{grid-column:2}
+  .tiles.rows .tile .go{white-space:normal;margin-top:.3rem}
+  .tiles.rows .tile h3{font-size:1.25rem}
+  .tiles.rows .tile p{font-size:1.05rem}
+}
+@media (prefers-reduced-motion:reduce){.tiles.rows .tile,.tiles.rows .tile .go span{transition:none}}
+
+/* ---------- colour blocks: a flat picture of what the link is, in shades of the block's own colour; one part moves on hover ---------- */
+.t-pic{display:block;width:5.6rem;height:5.6rem;margin-bottom:1.1rem;overflow:visible}
+.t-pic .a{fill:var(--ti)}
+.t-pic .b{fill:color-mix(in srgb,var(--tb) 45%,#fff)}
+.t-pic .c{fill:color-mix(in srgb,var(--tb) 55%,#000)}
+.t-pic .t{fill:var(--tb)}
+.t-pic .mv{transform-box:fill-box;transform-origin:50% 50%;transition:rotate .45s cubic-bezier(.3,1.6,.4,1),translate .45s cubic-bezier(.3,1.6,.4,1),scale .45s cubic-bezier(.3,1.6,.4,1)}
+.tile:hover .i-search .mv,.tile:focus-visible .i-search .mv{rotate:-16deg;translate:-3px -3px}
+.tile:hover .i-play .mv,.tile:focus-visible .i-play .mv{scale:1.3}
+.i-magazine .mv{transform-origin:20% 100%}
+.tile:hover .i-magazine .mv,.tile:focus-visible .i-magazine .mv{rotate:12deg}
+.tile:hover .i-book .mv,.tile:focus-visible .i-book .mv{translate:0 10px}
+.tile:hover .i-star .mv,.tile:focus-visible .i-star .mv{rotate:72deg;scale:1.15}
+.tile:hover .i-pin .mv,.tile:focus-visible .i-pin .mv{translate:0 -9px}
+.tile:hover .i-arrow .mv,.tile:focus-visible .i-arrow .mv{translate:7px 0}
+.tiles.bold .tile h3{font-size:1.5rem}
+@media (max-width:760px){.t-pic{width:4.2rem;height:4.2rem;margin-bottom:.8rem}}
+@media (prefers-reduced-motion:reduce){.t-pic .mv{transition:none}}
+
+/* ---------- polaroid snapshots: each link is a taped-up photo with a handwritten caption ---------- */
+.tiles.pola{display:flex;flex-wrap:wrap;justify-content:center;gap:2.2rem 1.6rem;padding-top:1.2rem}
+.tiles.pola .tile{position:relative;flex:0 1 13.5rem;min-width:9.5rem;min-height:0;display:block;grid-column:auto;background:#FDF9EF;color:#1F1A14;
+  padding:.75rem .75rem 1.1rem;border-radius:.2rem;box-shadow:0 .4rem 0 rgba(31,26,20,.13);rotate:var(--r,0deg);
+  transition:rotate .35s cubic-bezier(.3,1.5,.4,1),translate .35s cubic-bezier(.3,1.5,.4,1)}
+.tiles.pola .tile:nth-child(5n+1){--r:-2.6deg}
+.tiles.pola .tile:nth-child(5n+2){--r:1.8deg}
+.tiles.pola .tile:nth-child(5n+3){--r:-1.2deg}
+.tiles.pola .tile:nth-child(5n+4){--r:2.5deg}
+.tiles.pola .tile:nth-child(5n+5){--r:-1.9deg}
+.tiles.pola .tile:hover,.tiles.pola .tile:focus-visible{rotate:0deg;translate:0 -.45rem}
+.tiles.pola .photo{display:grid;place-items:center;aspect-ratio:1;background:var(--tb)}
+.tiles.pola .t-pic{width:58%;height:auto;aspect-ratio:1;margin:0}
+.tiles.pola .tape{position:absolute;top:-.75rem;left:50%;width:4.4rem;height:1.5rem;translate:-50% 0;rotate:-4deg;background:rgba(232,89,31,.42)}
+.tiles.pola .tile:nth-child(even) .tape{rotate:5deg;background:rgba(16,42,76,.32)}
+.tiles.pola .cap{display:block;text-align:center;padding:.7rem .2rem 0}
+.hand{display:block;font-family:"Patrick Hand","Comic Sans MS","Bradley Hand",cursive;font-weight:400;font-size:1.65rem;line-height:1.1}
+.tiles.pola .sub{display:block;margin-top:.35rem;font-size:.98rem;line-height:1.35;color:#5A4F40}
+@media (max-width:560px){
+  .tiles.pola{gap:1.8rem 1rem}
+  .tiles.pola .tile{flex-basis:calc(50% - .5rem);padding:.55rem .55rem .9rem}
+  .hand{font-size:1.4rem}
+  .tiles.pola .sub{font-size:.92rem}
+}
+@media (prefers-reduced-motion:reduce){.tiles.pola .tile{transition:none}}
+
+/* ---------- tall colour panels, shoulder to shoulder: name and a line on top, a picture of the thing, an arrow at the foot ---------- */
+.tiles.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:0;border-radius:.9rem;overflow:hidden}
+.tiles.panels .tile{grid-column:auto;border-radius:0;min-height:24rem;padding:1.4rem 1.3rem 1.2rem;display:flex;flex-direction:column;justify-content:flex-start;gap:0;
+  background:var(--tb);color:var(--ti);transition:none}
+.tiles.panels .tile:hover,.tiles.panels .tile:focus-visible{translate:none}
+.tiles.panels .tile:focus-visible{outline-offset:-4px}
+.p-head h3{font-size:1.45rem;line-height:1.1}
+.p-text{display:block;margin-top:.5rem;font-size:1rem;line-height:1.4}
+.tiles.panels .t-pic{width:min(70%,8rem);height:auto;aspect-ratio:1;margin:auto;padding-block:.6rem;transition:scale .4s cubic-bezier(.3,1.5,.4,1)}
+.tiles.panels .tile:hover .t-pic,.tiles.panels .tile:focus-visible .t-pic{scale:1.08}
+.p-go{display:flex;align-items:center;gap:.6rem;font-weight:500;font-size:.98rem}
+.p-arrow{display:inline-block;font-size:1.3rem;line-height:1;transition:translate .25s}
+.tiles.panels .tile:hover .p-arrow,.tiles.panels .tile:focus-visible .p-arrow{translate:.35rem 0}
+@media (max-width:900px){
+  .tiles.panels{grid-template-columns:minmax(0,1fr)}
+  .tiles.panels .tile{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 5.5rem;grid-template-areas:"head pic" "go pic";gap:.8rem 1rem;align-items:center;padding:1.2rem}
+  .p-head{grid-area:head}
+  .p-go{grid-area:go}
+  .tiles.panels .t-pic{grid-area:pic;width:5.5rem;margin:0;padding:0}
+}
+@media (prefers-reduced-motion:reduce){.tiles.panels .t-pic,.p-arrow{transition:none}}
+
+/* ---------- panels, second pass: separate flat panels with bigger, more playful drawings ---------- */
+.tiles.panels{gap:.6rem;border-radius:0;overflow:visible}
+.tiles.panels .tile{border-radius:.35rem;min-height:26rem;padding:1.5rem 1.3rem 1.2rem}
+.tiles.panels .t-pic{width:min(86%,10.5rem);padding-block:.4rem}
+.tiles.panels .tile:hover .t-pic,.tiles.panels .tile:focus-visible .t-pic{scale:1.06;rotate:-3deg}
+.tiles.panels .t-pic{transition:scale .4s cubic-bezier(.3,1.5,.4,1),rotate .4s cubic-bezier(.3,1.5,.4,1)}
+.tile:hover .i-search .mv,.tile:focus-visible .i-search .mv{rotate:-14deg;translate:-3px -3px}
+.tile:hover .i-play .mv,.tile:focus-visible .i-play .mv{scale:1.35}
+.i-magazine .mv{transform-origin:50% 100%}
+.tile:hover .i-magazine .mv,.tile:focus-visible .i-magazine .mv{rotate:-9deg}
+.tile:hover .i-book .mv,.tile:focus-visible .i-book .mv{translate:0 -9px;rotate:-5deg}
+.tile:hover .i-star .mv,.tile:focus-visible .i-star .mv{scale:1.18;rotate:0deg}
+.tile:hover .i-pin .mv,.tile:focus-visible .i-pin .mv{translate:0 -10px}
+@media (max-width:900px){
+  .tiles.panels{gap:.5rem}
+  .tiles.panels .tile{min-height:0;grid-template-columns:minmax(0,1fr) 6.5rem}
+  .tiles.panels .t-pic{width:6.5rem}
+}
+
+/* ---------- crafty, soothing version: a patterned paper frame (stripes, gingham, dots) around a cream card with a scalloped sticker ---------- */
+.tiles.panels{gap:.9rem}
+.tiles.panels .tile{padding:.75rem;border-radius:.5rem;min-height:25rem;background-color:var(--tb);color:#3A1420}
+.tiles.panels .tile.pat-0{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.42) 0 .7rem,transparent .7rem 1.4rem)}
+.tiles.panels .tile.pat-1{background-image:linear-gradient(90deg,rgba(255,255,255,.38) 50%,transparent 50%),linear-gradient(rgba(255,255,255,.38) 50%,transparent 50%);background-size:1.5rem 1.5rem}
+.tiles.panels .tile.pat-2{background-image:radial-gradient(circle,rgba(255,255,255,.6) 24%,transparent 26%);background-size:1.2rem 1.2rem}
+.p-card{flex:1;display:flex;flex-direction:column;background:#FCF6EA;border-radius:.35rem;padding:1.2rem 1.1rem 1rem;min-height:0;
+  transition:rotate .4s cubic-bezier(.3,1.5,.4,1),translate .4s cubic-bezier(.3,1.5,.4,1)}
+.tiles.panels .tile:hover .p-card,.tiles.panels .tile:focus-visible .p-card{rotate:-1.6deg;translate:0 -.25rem}
+.tiles.panels .tile:nth-child(even):hover .p-card,.tiles.panels .tile:nth-child(even):focus-visible .p-card{rotate:1.6deg}
+.p-card .p-head h3{font-size:1.4rem;color:#3A1420}
+.p-card .p-text{color:#5A3A40}
+.scallop{fill:var(--tb)}
+.tiles.panels .t-pic{width:min(92%,10.5rem);padding-block:.5rem;rotate:none}
+.tiles.panels .tile:hover .t-pic,.tiles.panels .tile:focus-visible .t-pic{scale:1.04;rotate:none}
+.p-card .p-go{justify-content:space-between;color:#78273B;border-top:2px dashed color-mix(in srgb,var(--tb) 70%,#78273B);padding-top:.75rem}
+@media (max-width:900px){
+  .tiles.panels .tile{min-height:0;display:block;padding:.6rem}
+  .p-card{display:grid;grid-template-columns:minmax(0,1fr) 6.5rem;grid-template-areas:"head pic" "go go";gap:.8rem 1rem;align-items:center;padding:1rem}
+  .p-card .p-head{grid-area:head}
+  .p-card .p-go{grid-area:go}
+  .tiles.panels .t-pic{grid-area:pic;width:6.5rem;margin:0;padding:0}
+}
+@media (prefers-reduced-motion:reduce){.p-card{transition:none}}
+
+/* ---------- paper cards, third pass: the pattern is the card (two colours, no white wash); a cream scalloped sticker and a cream name tag sit on it ---------- */
+.tiles.panels .tile{padding:1.1rem .9rem .9rem;min-height:18.5rem;justify-content:space-between;align-items:stretch}
+.tiles.panels .tile.pat-0{background-image:repeating-linear-gradient(90deg,var(--p2) 0 .55rem,transparent .55rem 1.5rem)}
+.tiles.panels .tile.pat-1{background-image:linear-gradient(90deg,color-mix(in oklch,var(--p2) 55%,transparent) 50%,transparent 50%),linear-gradient(color-mix(in oklch,var(--p2) 55%,transparent) 50%,transparent 50%);background-size:1.6rem 1.6rem}
+.tiles.panels .tile.pat-2{background-image:radial-gradient(circle,var(--p2) 22%,transparent 24%);background-size:1.3rem 1.3rem}
+.tiles.panels .scallop{fill:#FCF6EA}
+.tiles.panels .t-pic{width:min(88%,10rem);margin:0 auto;padding:0;transition:rotate .4s cubic-bezier(.3,1.5,.4,1),scale .4s cubic-bezier(.3,1.5,.4,1)}
+.tiles.panels .tile:hover .t-pic,.tiles.panels .tile:focus-visible .t-pic{rotate:-6deg;scale:1.05}
+.tiles.panels .tile:nth-child(even):hover .t-pic,.tiles.panels .tile:nth-child(even):focus-visible .t-pic{rotate:6deg}
+.p-tag{display:flex;align-items:center;justify-content:space-between;gap:.6rem;background:#FCF6EA;color:#1F1A14;border-radius:.4rem;padding:.75rem .85rem;margin-top:1rem}
+.p-tag h3{font-size:1.2rem;line-height:1.15;color:#1F1A14}
+.p-tag .p-arrow{flex:none;color:#102A4C;font-size:1.3rem}
+@media (max-width:900px){
+  .tiles.panels{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+  .tiles.panels .tile{display:flex;min-height:13.5rem;padding:.9rem .7rem .7rem;grid-template-columns:none;grid-template-areas:none}
+  .tiles.panels .tile:last-child:nth-child(odd){grid-column:1 / -1;flex-direction:row;align-items:center;min-height:0;gap:.9rem}
+  .tiles.panels .tile:last-child:nth-child(odd) .t-pic{width:6rem;margin:0}
+  .tiles.panels .tile:last-child:nth-child(odd) .p-tag{flex:1;margin-top:0}
+  .tiles.panels .t-pic{width:min(80%,7.5rem)}
+  .p-tag{padding:.6rem .65rem}
+  .p-tag h3{font-size:1.05rem}
+}
+
+/* paper cards: the one-line description is back, under the heading on the name tag; brighter colours get a same-hue deeper second tone */
+.tiles.panels .tile{min-height:21rem}
+.tiles.panels{--mix:#5A1030}
+.p-tag{align-items:flex-start}
+.p-words{display:block;min-width:0}
+.p-tag .p-text{display:block;margin-top:.3rem;font-size:.95rem;line-height:1.35;color:#4A4236}
+.p-tag .p-arrow{align-self:center}
+@media (max-width:900px){
+  .tiles.panels .tile{min-height:0}
+  .p-tag .p-text{font-size:.9rem}
+}
+
+/* name tag: words use the full width, the arrow sits underneath on the right */
+.p-tag{flex-direction:column;align-items:stretch;gap:.35rem}
+.p-tag .p-arrow{align-self:flex-end;line-height:1}
+@media (max-width:900px){
+  .tiles.panels .tile:last-child:nth-child(odd) .p-tag{flex-direction:row;align-items:center}
+  .tiles.panels .tile:last-child:nth-child(odd) .p-tag .p-arrow{align-self:center}
+}
+
+/* a card may name its own pattern colour (pink with maroon checks); otherwise the pattern is a deeper shade of the card colour */
+.tiles.panels .tile{--pp:var(--p2,color-mix(in oklch,var(--tb) 78%,#5A1030))}
+/* one pattern for every card (a fine gingham, tone on tone); only the colour changes, so the row reads as one set */
+.tiles.panels .tile.pat-0,.tiles.panels .tile.pat-1,.tiles.panels .tile.pat-2{background-image:linear-gradient(90deg,color-mix(in oklch,var(--pp) 36%,transparent) 50%,transparent 50%),linear-gradient(color-mix(in oklch,var(--pp) 36%,transparent) 50%,transparent 50%);background-size:.64rem .64rem}
+
+/* paper cards are all the same size: the sticker is fixed, the name tag fills the rest, and on narrower screens the cards wrap and stay centred instead of changing shape */
+.tiles.panels{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
+.tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){flex:0 0 calc((100% - 3.2rem) / 5);grid-column:auto;display:flex;flex-direction:column;align-items:stretch;min-height:21rem;gap:0}
+.tiles.panels .t-pic,.tiles.panels .tile:last-child:nth-child(odd) .t-pic{flex:none;width:min(88%,10rem);margin:0 auto}
+.tiles.panels .p-tag,.tiles.panels .tile:last-child:nth-child(odd) .p-tag{flex:1;margin-top:1rem;flex-direction:column;align-items:stretch}
+.p-tag .p-arrow,.tiles.panels .tile:last-child:nth-child(odd) .p-tag .p-arrow{margin-top:auto;align-self:flex-end}
+@media (max-width:1000px){
+  .tiles.panels{gap:.6rem}
+  .tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){flex-basis:calc((100% - 1.2rem) / 3);min-height:18rem}
+  .tiles.panels .t-pic,.tiles.panels .tile:last-child:nth-child(odd) .t-pic{width:min(80%,8rem)}
+}
+@media (max-width:620px){
+  .tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){flex-basis:calc((100% - .6rem) / 2);min-height:16rem}
+}
+
+/* the scalloped sticker keeps a slightly uneven, hand-cut edge */
+.tiles.panels .scallop{filter:url(#crafty)}
+.credit a{color:inherit}
+
+/* name tags hug their words: no forced card height, so there is no blank band inside the text box; tags in a row still match each other */
+.tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){min-height:0;padding:1rem .8rem .8rem}
+.tiles.panels .p-tag,.tiles.panels .tile:last-child:nth-child(odd) .p-tag{margin-top:.9rem;padding:.8rem .9rem .6rem;gap:.15rem}
+.p-tag h3{font-size:1.25rem}
+.p-tag .p-text{margin-top:.25rem}
+.p-tag .p-arrow,.tiles.panels .tile:last-child:nth-child(odd) .p-tag .p-arrow{margin-top:.1rem}
+@media (max-width:1000px){.tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){min-height:0}}
+@media (max-width:620px){.tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){min-height:0}.p-tag h3{font-size:1.08rem}}
+
+.t-sticker{display:block;flex:none;width:min(8.6rem,78%);height:auto;aspect-ratio:1;margin:.7rem auto .5rem;overflow:visible}
+/* paper cards: square corners, the gingham is a border all round, and inside it a plain panel holds the framed sticker picture and the words; the words sit on a band along the bottom in the same quiet panel colour on every card with the arrow beside the words instead of on its own line; the pattern is the same height on every card so the bands line up (no arrow on phones, where the words need the width) */
+.tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){padding:.8rem;border-radius:0;overflow:hidden;justify-content:flex-start;box-shadow:none}
+/* no arrow inside the bordered cards: the words need the full width, and the whole card is the link (the heading underlines on hover) */
+.tiles.panels .p-tag .p-arrow{display:none}
+.tiles.panels .tile:hover h3,.tiles.panels .tile:focus-visible h3{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.p-in{flex:1;display:flex;flex-direction:column;justify-content:center;background:color-mix(in oklch,var(--tb) 13%,var(--bg));padding-bottom:.2rem}
+.tiles.panels .p-tag,.tiles.panels .tile:last-child:nth-child(odd) .p-tag{margin-top:0;border-radius:0;background:none;color:var(--card-ink);padding:0 .7rem .8rem;text-align:center;flex:none;flex-direction:row;align-items:center;gap:.6rem}
+.tiles.panels .p-tag .p-words{flex:1}
+.tiles.panels .p-tag h3{color:var(--card-ink)}
+.tiles.panels .p-tag .p-text{color:var(--muted)}
+.tiles.panels .p-tag .p-arrow,.tiles.panels .tile:last-child:nth-child(odd) .p-tag .p-arrow{margin-top:0;align-self:center;color:var(--accent)}
+@media (max-width:620px){
+  .tiles.panels .tile,.tiles.panels .tile:last-child:nth-child(odd){padding:.7rem}
+  .t-sticker{width:min(6.6rem,74%);margin:.6rem auto .4rem}
+  .tiles.panels .p-tag,.tiles.panels .tile:last-child:nth-child(odd) .p-tag{padding:0 .5rem .7rem}
+  .tiles.panels .p-tag .p-arrow{display:none}
+}
+
+/* notices and notes sit on a lighter panel with a fine edge; the little drawings stay small */
+.note-card{border:1px solid var(--card-rule)}
+.notes .note-card.has-art{grid-template-columns:4rem minmax(0,20rem) minmax(0,1fr)}
+.notes .art{width:4rem;border-radius:.5rem}
+@media (max-width:800px){.notes .note-card.has-art{grid-template-columns:3.4rem minmax(0,1fr)}.notes .art{width:3.4rem}}
+
+/* lighter emphasis everywhere: headings and bold text are medium weight, not heavy */
+strong,b{font-weight:600}
+
+/* notice drawings are loose hand-drawn pictures straight on the panel: no coloured tile behind them, slightly wobbly edges */
+.notes .art{background:none!important;border-radius:0;overflow:visible}
+.notes .art svg{overflow:visible}
+.notes .note-card.has-art{grid-template-columns:5.6rem minmax(0,20rem) minmax(0,1fr)}
+.notes .art{width:5.6rem}
+@media (max-width:800px){.notes .note-card.has-art{grid-template-columns:4.4rem minmax(0,1fr)}.notes .art{width:4.4rem}}
+
+/* ---------- magazine touches ---------- */
+/* the paragraph that opens a page is larger and in the title font */
+.opener,.welcome .prose>p.opener{font-family:var(--title);font-size:clamp(1.35rem,2.5vw,1.75rem);line-height:1.4;max-width:36rem;text-wrap:pretty}
+/* the menu uses the same font as the small headings */
+.nav .links a{font-family:var(--display);font-weight:500;letter-spacing:0}
+
+/* ---------- link list (the default): plain, useful buttons. The first link is the main action (a full-width deep-orange button; navy read as medical); the rest are equal lighter buttons in one row beneath it. Every button is picture on the left, words on the right, so nothing is left empty; on phones they simply stack ---------- */
+.tiles.plain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem}
+@media (max-width:1000px){.tiles.plain{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tiles.plain .tile,.tiles.plain .tile:last-child:nth-child(odd){grid-column:auto;display:grid;grid-template-columns:3.4rem minmax(0,1fr);align-items:center;gap:1rem;min-height:0;padding:1.1rem 1.2rem;border-radius:.75rem;background:var(--card);border:1px solid var(--card-rule);color:var(--card-ink);text-align:left;text-decoration:none;transition:background-color .15s,border-color .15s}
+.tiles.plain .tile:hover,.tiles.plain .tile:focus-visible{translate:none;border-color:var(--frame)}
+.tiles.plain .t-sticker{width:3.4rem;height:3.4rem;margin:0;aspect-ratio:auto}
+.pl-words{display:block}
+.tiles.plain h3{font-size:1.2rem;line-height:1.25}
+.pl-text{display:block;margin-top:.25rem;font-size:1.05rem;line-height:1.4;color:var(--muted)}
+.pl-go{display:none}
+.tiles.plain.lead .tile:first-child{grid-column:1 / -1;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:1.3rem;padding:1.3rem 1.6rem;background:#BF430C;border-color:#BF430C;color:#FFF8F0;--frame:#FFF8F0}
+.tiles.plain.lead .tile:first-child .t-sticker{width:4.2rem;height:4.2rem}
+.tiles.plain.lead .tile:first-child h3{font-size:1.6rem;color:#FFF8F0}
+.tiles.plain.lead .tile:first-child .pl-text{font-size:1.15rem;color:#FFE9DA}
+.tiles.plain.lead .tile:first-child .pl-go{display:block;font-size:1.7rem;line-height:1;transition:translate .2s}
+.tiles.plain.lead .tile:first-child:hover,.tiles.plain.lead .tile:first-child:focus-visible{background:#A83A0A;border-color:#A83A0A}
+.tiles.plain.lead .tile:first-child:hover .pl-go,.tiles.plain.lead .tile:first-child:focus-visible .pl-go{translate:.35rem 0}
+@media (max-width:760px){
+  .tiles.plain{grid-template-columns:minmax(0,1fr);gap:.6rem}
+  .tiles.plain.lead .tile:first-child{grid-template-columns:3.6rem minmax(0,1fr);gap:1rem;padding:1.1rem 1.2rem}
+  .tiles.plain.lead .tile:first-child .t-sticker{width:3.6rem;height:3.6rem}
+  .tiles.plain.lead .tile:first-child h3{font-size:1.4rem}
+  .tiles.plain.lead .tile:first-child .pl-go{display:none}
+  .tiles.plain h3{font-size:1.25rem}
+  .pl-text{font-size:1.1rem}
+}
+/* the link buttons are one orange family: the main button is deep orange with the section's only picture; the four smaller ones are a pale tint of the same orange with an orange arrow, and carry no pictures (ten on one page was too many, none was too plain) */
+.tiles.plain .t-sticker{display:none}
+.tiles.plain .tile,.tiles.plain .tile:last-child:nth-child(odd){grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:.8rem;background:#FBE5D6;border-color:#F3D3BE;padding:1.2rem 1.3rem 1.3rem}
+.tiles.plain .tile:hover,.tiles.plain .tile:focus-visible{border-color:#BF430C}
+.tiles.plain .pl-text{color:#5A4636}
+.tiles.plain .pl-go{display:block;font-size:1.3rem;line-height:1.25;color:#BF430C;transition:translate .2s}
+.tiles.plain .tile:hover .pl-go,.tiles.plain .tile:focus-visible .pl-go{translate:.25rem 0}
+.tiles.plain.lead .tile:first-child{grid-template-columns:5rem minmax(0,1fr) auto;align-items:center;gap:1.4rem;padding:1.4rem 1.7rem;background:#BF430C;border-color:#BF430C}
+.tiles.plain.lead .tile:first-child .t-sticker{display:block;width:5rem;height:5rem}
+.tiles.plain.lead .tile:first-child h3{font-size:1.75rem}
+.tiles.plain.lead .tile:first-child .pl-text{color:#FFE9DA}
+.tiles.plain.lead .tile:first-child .pl-go{color:inherit;font-size:1.8rem;line-height:1}
+:root[data-theme="dark"] .tiles.plain .tile,:root[data-theme="dark"] .tiles.plain.few .tile{background:#3A2619;border-color:#573A27}
+:root[data-theme="dark"] .tiles.plain .tile .pl-text,:root[data-theme="dark"] .tiles.plain.few .tile .pl-text{color:#E3CDBD}
+:root[data-theme="dark"] .tiles.plain .tile .pl-go,:root[data-theme="dark"] .tiles.plain.few .tile .pl-go{color:#FF9A6B}
+@media (max-width:760px){
+  .tiles.plain.lead .tile:first-child{grid-template-columns:3.8rem minmax(0,1fr);gap:1rem;padding:1.1rem 1.2rem}
+  .tiles.plain.lead .tile:first-child .t-sticker{width:3.8rem;height:3.8rem}
+  .tiles.plain.lead .tile:first-child h3{font-size:1.45rem}
+  .tiles.plain.lead .tile:first-child .pl-go{display:none}
+}
+/* a short list (three links or fewer) has no main button: the links are equal buttons side by side */
+.tiles.plain.few{grid-template-columns:repeat(var(--n,2),minmax(0,1fr))}
+.tiles.plain.few h3{font-size:1.35rem}
+.tiles.plain.few .pl-text{font-size:1.1rem}
+@media (max-width:760px){.tiles.plain.few{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.tiles.plain .tile,.pl-go{transition:none}}
+
+/* ---------- colour blocks (the original Borrow from anywhere), with a sticker picture where the leaf used to be and a plain arrow at the foot ---------- */
+.tiles.bold .tile{--pp:var(--tb)}
+.tiles.bold .t-sticker{width:4.8rem;height:4.8rem;margin:0 0 1rem;aspect-ratio:auto}
+.tiles.bold .tile h3{font-size:1.35rem}
+.tiles.bold .tile .go{font-size:1.3rem;line-height:1}
+@media (max-width:760px){.tiles.bold .t-sticker{width:3.6rem;height:3.6rem;margin-bottom:.7rem}}
+
+/* ---------- colour: one page background everywhere (tinted section bands looked random and were removed). Two brand colours (navy, orange) and one supporting green; sticker frames take turns between them ---------- */
+.tiles.plain .tile:nth-child(3n+2){--frame:#2B4F80}
+.tiles.plain .tile:nth-child(3n){--frame:#3F8358}
+.tiles.plain .tile:nth-child(3n+1):not(:first-child){--frame:#E8591F}
+
+/* ---------- catalog button in the header: the main reason people visit, on every page, before any scrolling ---------- */
+.cat-btn{order:2;margin-left:auto;flex:none;display:inline-flex;align-items:center;background:#BF430C;color:#FFF8F0;font:500 1.05rem var(--display);padding:.7rem 1.3rem;border-radius:999px;text-decoration:none}
+.cat-btn:hover,.cat-btn:focus-visible{background:#A83A0A}
+.nav .lamp-wrap{margin-left:.9rem}
+@media (max-width:760px){
+  .nav .lamp-wrap{margin-left:auto}
+  .cat-btn{order:4;flex:1 1 100%;justify-content:center;margin:0;padding:.85rem 1rem;border-radius:.75rem;font-size:1.15rem}
+}
+
+/* ---------- notices beyond the first three: hidden on phones only, behind a button under the list ---------- */
+.more-btn{display:none}
+@media (max-width:760px){
+  .notes:not(.all) .nc-x{display:none}
+  .more-btn{display:inline-block;margin-top:.7rem;cursor:pointer;font:500 1.1rem var(--display);color:var(--ink);padding:.8rem 1.3rem;border:1px solid var(--card-rule);border-radius:999px;background:var(--card)}
+}
+
+/* ---------- story box (Who was...?): the same light panel as the other boxes, not a navy block ---------- */
+.spot{background:var(--card);color:var(--card-ink);border:1px solid var(--card-rule)}
+
+/* ---------- small print: footer and fine print are at least 16px ---------- */
+.foot,.foot a,.visit .small{font-size:1rem}
+
+/* ---------- month view and list labels: larger lettering (was 12 to 14px) ---------- */
+.dow{font-size:.9rem}
+/* only where the month grid shows words; on narrower screens the events are small dots and must stay dots */
+@media (min-width:761px){.chip{font-size:.95rem}.chip b{font-size:.88rem}}
+.cal-list .tag{font-size:1rem}
+
+/* ---------- announcement strips and join boxes: the same light panel as every other box, with one orange button (they were solid navy blocks) ---------- */
+.banner,.cta-box{--tb:var(--card)!important;--ti:var(--card-ink)!important;border:1px solid var(--card-rule)}
+.banner .btn,.cta-box .btn{background:#BF430C;color:#FFF8F0}
+.banner .btn.alt,.cta-box .btn.alt{background:none;color:var(--card-ink);box-shadow:inset 0 0 0 2px var(--card-ink)}
+.cta-box{grid-template-columns:minmax(0,1fr)}
+.cta-box .leaf{display:none}
+
+/* night colours: the main catalog button in the links section stays deep orange */
+:root[data-theme="dark"] .tiles.plain.lead .tile:first-child{background:#BF430C;border-color:#BF430C}
+:root[data-theme="dark"] .tiles.plain.lead .tile:first-child .pl-text{color:#FFE9DA}
+:root[data-theme="dark"] .tiles.plain.lead .tile:first-child .pl-go{color:#FFF8F0}
+
+/* ---------- Friends logo in the join box ---------- */
+.cta-box.has-logo{grid-template-columns:auto minmax(0,1fr);gap:1.4rem 2.4rem}
+/* the logo file has a white background; blending it into the panel makes that white disappear, so the logo sits straight on the box (night colours keep a white card, since the logo is dark artwork) */
+.cta-logo{display:block;width:clamp(10rem,22vw,16rem);height:auto;mix-blend-mode:multiply}
+:root[data-theme="dark"] .cta-logo{mix-blend-mode:normal;background:#fff;padding:.9rem 1rem;border-radius:.6rem}
+@media (max-width:700px){.cta-box.has-logo{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- endless band of partner logos across the foot of a page ---------- */
+.logo-run{padding-block:0;background:#fff;overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.lr-track{display:flex;width:max-content;animation:lr-slide 70s linear infinite}
+.lr-track img{flex:none;display:block;width:62rem;max-width:none;aspect-ratio:1545 / 236;object-fit:cover;object-position:50% 100%;margin:1.1rem 2rem}
+.logo-run:hover .lr-track,.logo-run:focus .lr-track,.logo-run:focus-within .lr-track{animation-play-state:paused}
+@keyframes lr-slide{to{transform:translateX(-50%)}}
+@media (max-width:760px){.lr-track img{width:44rem;margin:.8rem 1.2rem}.lr-track{animation-duration:55s}}
+@media (prefers-reduced-motion:reduce){.lr-track{animation:none}}
+
+/* ---------- endless line of names across the foot of a page ---------- */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.name-run{padding-block:1.5rem;overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.nr-track{display:flex;align-items:center;width:max-content;animation:lr-slide 150s linear infinite}
+.nr-name{flex:none;font-family:var(--title);font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2;white-space:nowrap;color:var(--ink)}
+.nr-dot{flex:none;width:.5rem;height:.5rem;border-radius:50%;background:#E8591F;margin-inline:1.8rem}
+.name-run:hover .nr-track,.name-run:focus .nr-track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.nr-track{animation:none}}
+
+/* ---------- a note set as a real letter: a sheet of writing paper lying slightly askew, generous margins, a hand-signed name ---------- */
+.quote.letter{max-width:44rem;margin:.6rem 0 1rem;padding:clamp(1.8rem,5vw,3.4rem) clamp(1.4rem,5vw,3.6rem) clamp(1.6rem,4vw,2.8rem);background:#FFFEFA;color:#2A241D;border:1px solid #E9E1D2;border-radius:.2rem;box-shadow:0 1px 1px rgba(60,45,25,.08),0 .7rem 1.6rem -.6rem rgba(60,45,25,.28);rotate:-.7deg}
+.quote.letter p{font-size:1.18rem;line-height:1.75;max-width:none;margin:0 0 1.2rem}
+.quote.letter figcaption{margin-top:1.8rem;font-family:"Caveat","Bradley Hand",cursive;font-weight:600;font-size:clamp(1.9rem,4vw,2.4rem);line-height:1.1;color:#2B4F80;text-align:right}
+@media (max-width:760px){.quote.letter{rotate:-.4deg}}
+
+/* ---------- a short set of facts (Where, Lead artist, Funded by): one panel, one row per fact ---------- */
+.facts{margin:0;background:var(--card);color:var(--card-ink);border:1px solid var(--card-rule);border-radius:.75rem;padding:.4rem 2rem}
+.facts>div{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:.3rem 2.4rem;align-items:baseline;padding:1.2rem 0;border-top:1px solid var(--card-rule)}
+.facts>div:first-child{border-top:0}
+.facts dt{font-family:var(--display);font-weight:500;font-size:1.2rem}
+.facts dd{margin:0;font-size:1.15rem;line-height:1.5}
+@media (max-width:760px){.facts{padding:.2rem 1.2rem}.facts>div{grid-template-columns:minmax(0,1fr);padding:1rem 0}}
+
+/* headings are back in the original heading font (Bricolage Grotesque, semi-bold), as on the published mockup; lines that borrowed the thin title font are set a little lighter so they do not shout */
+.opener,.welcome .prose>p.opener{font-weight:400;letter-spacing:-.01em}
+.nr-name{font-weight:500;letter-spacing:-.02em}
+
+/* ---------- photos in sticker frames, like the little pictures beside the notices: a coloured paper mount with a scalloped edge, a perforated stamp edge or a plain double rule, taking turns, all in one warm paper colour (three colours, bright or soft, were too much next to the photos) ---------- */
+.gallery.framed{column-gap:1.1rem}
+.gallery.framed figure{margin-bottom:1.3rem}
+.ph-frame{display:block;--r:.42rem;--fc:#2B4F80;background:var(--fc);padding:calc(var(--r)*2.2)}
+.ph-frame img{border-radius:.15rem;background:var(--card)}
+/* scalloped edge: a row of half-circles all round */
+.gallery.framed figure:nth-child(3n+1) .ph-frame{
+  -webkit-mask:radial-gradient(var(--r) at var(--r) var(--r),#000 96%,#0000) 0 0/calc(var(--r)*2) calc(var(--r)*2) round,linear-gradient(#000 0 0) center/calc(100% - var(--r)*2) calc(100% - var(--r)*2) no-repeat;
+  mask:radial-gradient(var(--r) at var(--r) var(--r),#000 96%,#0000) 0 0/calc(var(--r)*2) calc(var(--r)*2) round,linear-gradient(#000 0 0) center/calc(100% - var(--r)*2) calc(100% - var(--r)*2) no-repeat}
+/* postage stamp: small bites out of the edge */
+.gallery.framed figure:nth-child(3n+2) .ph-frame{--r:.34rem;
+  -webkit-mask:radial-gradient(var(--r) at 50% 50%,#0000 94%,#000) calc(var(--r)*-1.5) calc(var(--r)*-1.5)/calc(var(--r)*3) calc(var(--r)*3) round,linear-gradient(#000 0 0) center/calc(100% - var(--r)*3) calc(100% - var(--r)*3) no-repeat;
+  mask:radial-gradient(var(--r) at 50% 50%,#0000 94%,#000) calc(var(--r)*-1.5) calc(var(--r)*-1.5)/calc(var(--r)*3) calc(var(--r)*3) round,linear-gradient(#000 0 0) center/calc(100% - var(--r)*3) calc(100% - var(--r)*3) no-repeat;
+  padding:calc(var(--r)*3.2)}
+/* plain mount with a fine inner rule */
+.gallery.framed figure:nth-child(3n) .ph-frame{padding:.75rem;border-radius:.3rem}
+.gallery.framed figure:nth-child(3n) .ph-frame img{outline:1.5px solid #FFFDF8;outline-offset:.22rem}
+:root[data-theme="dark"] .ph-frame{--fc:#5A4D3D}
+
+/* a trial of depth on the one large orange surface: a very gentle shift from a warmer orange at the top left to a deeper one at the bottom right (no shine, no glow) */
+.tiles.plain.lead .tile:first-child,:root[data-theme="dark"] .tiles.plain.lead .tile:first-child{background:linear-gradient(135deg,#C9501A 0%,#BF430C 45%,#A8380A 100%)}
+.tiles.plain.lead .tile:first-child:hover,.tiles.plain.lead .tile:first-child:focus-visible{background:linear-gradient(135deg,#BF430C 0%,#A8380A 100%)}
+
+/* ---------- orange is kept for one job, the catalog (the header button and the big button under "Borrow from anywhere"). Every other button is navy, and the smaller link buttons are the plain beige panel with a navy arrow ---------- */
+.banner .btn,.cta-box .btn{background:#1D3A63;color:#FBF9F5}
+:root[data-theme="dark"] .banner .btn,:root[data-theme="dark"] .cta-box .btn{background:#9DB7E0;color:#14233A}
+.tiles.plain .tile,.tiles.plain .tile:last-child:nth-child(odd){background:var(--card);border-color:var(--card-rule)}
+.tiles.plain .tile:hover,.tiles.plain .tile:focus-visible{border-color:var(--frame)}
+.tiles.plain .pl-text{color:var(--muted)}
+.tiles.plain .pl-go{color:var(--accent)}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child),:root[data-theme="dark"] .tiles.plain:not(.lead) .tile{background:var(--card);border-color:var(--card-rule)}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child) .pl-text,:root[data-theme="dark"] .tiles.plain:not(.lead) .tile .pl-text{color:var(--muted)}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child) .pl-go,:root[data-theme="dark"] .tiles.plain:not(.lead) .tile .pl-go{color:var(--accent)}
+/* the big catalog button keeps its orange and its light text */
+.tiles.plain.lead .tile:first-child,:root[data-theme="dark"] .tiles.plain.lead .tile:first-child{background:linear-gradient(135deg,#C9501A 0%,#BF430C 45%,#A8380A 100%);border-color:#BF430C}
+.tiles.plain.lead .tile:first-child .pl-text{color:#FFE9DA}
+.tiles.plain.lead .tile:first-child .pl-go{color:#FFF8F0}
+
+/* ---------- the smaller link buttons: light cream paper (the user's pick from a side-by-side page), dark text, each one's hand-drawn sticker picture on the left, and a small arrow after the heading so it is clear they are links ---------- */
+.tiles.plain .tile:not(:first-child),.tiles.plain .tile:last-child:nth-child(odd):not(:first-child),.tiles.plain.few .tile{background:#FBF5EA;border-color:#EADFCB;color:#1F1A14;grid-template-columns:3.6rem minmax(0,1fr);align-items:center;gap:1rem;padding:1.1rem 1.2rem}
+.tiles.plain .tile:not(:first-child) .t-sticker,.tiles.plain.few .tile .t-sticker{display:block;width:3.6rem;height:3.6rem;margin:0;--sticker:#FFFFFF}
+.tiles.plain .tile:not(:first-child) h3,.tiles.plain.few .tile h3{color:#1F1A14;font-size:1.2rem}
+.tiles.plain .tile:not(:first-child) h3::after,.tiles.plain.few .tile h3::after{content:"\00a0\2192" / "";color:var(--accent);font-weight:500;white-space:nowrap}
+.tiles.plain .tile:not(:first-child) .pl-text,.tiles.plain.few .tile .pl-text{color:#5A5145}
+.tiles.plain .tile:not(:first-child) .pl-go,.tiles.plain.few .tile .pl-go{display:none}
+.tiles.plain .tile:not(:first-child):hover,.tiles.plain .tile:not(:first-child):focus-visible,.tiles.plain.few .tile:hover,.tiles.plain.few .tile:focus-visible{background:#F8F0E1;border-color:#2B4F80}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child),:root[data-theme="dark"] .tiles.plain:not(.lead) .tile{background:var(--card);border-color:var(--card-rule);color:#F5EEE2}
+:root[data-theme="dark"] .tiles.plain .tile:not(:first-child) h3,:root[data-theme="dark"] .tiles.plain.few .tile h3{color:#F5EEE2}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child) .pl-text,:root[data-theme="dark"] .tiles.plain:not(.lead) .tile .pl-text{color:var(--muted)}
+
+/* ---------- warmth back: the page is the cream of the published mockup (#FAF4E8) with deeper cream boxes; the smaller link buttons are a warm light cream so they still sit lighter than the boxes ---------- */
+.tiles.plain .tile:not(:first-child),.tiles.plain .tile:last-child:nth-child(odd):not(:first-child),.tiles.plain.few .tile{background:#FDF8EC;border-color:#E3D4B6}
+.tiles.plain .tile:not(:first-child):hover,.tiles.plain .tile:not(:first-child):focus-visible,.tiles.plain.few .tile:hover,.tiles.plain.few .tile:focus-visible{background:#FBF3E0;border-color:#1D3A63}
+:root[data-theme="dark"] .tiles.plain.lead .tile:not(:first-child),:root[data-theme="dark"] .tiles.plain:not(.lead) .tile{background:var(--card);border-color:var(--card-rule)}
+/* blocky pictures sit straight on the button, a little larger than the framed ones were */
+.tiles.plain .tile:not(:first-child) .t-block,.tiles.plain.few .tile .t-block{width:3.9rem;height:3.9rem}
+.tiles.plain.lead .tile:first-child .t-block{width:4.4rem;height:4.4rem}
